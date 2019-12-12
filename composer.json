@@ -50,7 +50,13 @@
             "@composer migrate -- -p=@roaresearch/yii2/oauth2server/migrations/tables",
             "@composer migrate -- -p=@roaresearch/yii2/workflow/migrations",
             "@composer migrate -- -p=@app/migrations",
-            "@composer migrate -- -p=@yii/rbac/migrations"
+            "@composer migrate -- -p=@yii/rbac/migrations",
+            "chmod +x git-hooks/pre-commit",
+            "ln -s git-hooks/pre-commit .git/hooks/pre-commit"
+        ],
+        "sniff-php-file": [
+            "@php -l",
+            "vendor/bin/phpcs"
         ],
         "run-tests": "vendor/bin/codecept run --steps",
         "run-coverage": "@composer run-tests -- --coverage --coverage-xml"
