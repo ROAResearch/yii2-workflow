@@ -219,7 +219,7 @@ class CreditAssignmentCest extends AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function recordJsonType()
+    protected function recordJsonType(): array
     {
         return [
             'process_id' => 'integer:>0|string',
@@ -230,7 +230,7 @@ class CreditAssignmentCest extends AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function getRoutePattern()
+    protected function getRoutePattern(): string
     {
         return 'v1/credit/<process_id:\d+>/assignment';
     }

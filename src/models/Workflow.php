@@ -31,7 +31,7 @@ class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
     /**
      * @inheritdoc
      */
-    protected function attributeTypecast()
+    protected function attributeTypecast(): ?array
     {
         return parent::attributeTypecast() + ['id' => 'integer'];
     }

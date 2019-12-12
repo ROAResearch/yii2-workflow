@@ -78,7 +78,7 @@ abstract class Process extends Entity
     /**
      * @inheritdoc
      */
-    public function load($data, ?string $formName = null)
+    public function load($data, $formName = null)
     {
         if ($this->hasInitialWorklog()) {
             $logLoad = $this->initialWorkLog->load($data, $formName);

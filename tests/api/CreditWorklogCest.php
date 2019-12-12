@@ -181,7 +181,7 @@ class CreditWorklogCest extends AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function recordJsonType()
+    protected function recordJsonType(): array
     {
         return [
             'id' => 'integer:>0',
@@ -191,7 +191,7 @@ class CreditWorklogCest extends AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function getRoutePattern()
+    protected function getRoutePattern(): string
     {
         return 'v1/credit/<process_id:\d+>/worklog';
     }

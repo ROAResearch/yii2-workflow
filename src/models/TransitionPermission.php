@@ -43,7 +43,7 @@ class TransitionPermission extends \roaresearch\yii2\rmdb\models\Entity
     /**
      * @inheritdoc
      */
-    protected function attributeTypecast()
+    protected function attributeTypecast(): ?array
     {
         return parent::attributeTypecast() + [
             'source_stage_id' => 'integer',

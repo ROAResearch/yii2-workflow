@@ -3,7 +3,7 @@
 namespace roaresearch\yii2\workflow\roa\models;
 
 use roaresearch\yii2\roa\ResourceSearch;
-use yii\{data\ActiveDataProvider, NotFoundHttpException};
+use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
 
 /**
  * Contract to filter and sort collections of `Transition` records.

@@ -315,7 +315,7 @@ class TransitionPermissionCest extends AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function recordJsonType()
+    protected function recordJsonType(): array
     {
         return [
             'source_stage_id' => 'integer:>0',
@@ -328,7 +328,7 @@ class TransitionPermissionCest extends AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function getRoutePattern()
+    protected function getRoutePattern(): string
     {
         return 'w1/workflow/<workflow_id:\d+>/stage/<stage_id:\d+>/transition/<target_id:\d+>/permission';
     }
