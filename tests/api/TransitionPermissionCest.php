@@ -1,17 +1,19 @@
 <?php
 
-use Codeception\Example;
-use Codeception\Util\HttpCode;
-use app\fixtures\AuthItemFixture;
-use app\fixtures\OauthAccessTokensFixture;
-use app\fixtures\TransitionPermissionFixture;
+use app\fixtures\{
+    AuthItemFixture,
+    OauthAccessTokensFixture,
+    TransitionPermissionFixture
+};
+use Codeception\{Example, Util\HttpCode};
+use roaresearch\yii2\roa\test\AbstractResourceCest;
 
 /**
  * Cest to transition_permission resource.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class TransitionPermissionCest extends \tecnocen\roa\test\AbstractResourceCest
+class TransitionPermissionCest extends AbstractResourceCest
 {
     protected function authToken(ApiTester $I)
     {
@@ -306,7 +308,7 @@ class TransitionPermissionCest extends \tecnocen\roa\test\AbstractResourceCest
             'workflow not found' => [
                 'url' => '/w1/workflow/10/stage/1/transition/2/permission/admin',
                 'httpCode' => HttpCode::NOT_FOUND,
-	        ],
+            ],
         ];
     }
 

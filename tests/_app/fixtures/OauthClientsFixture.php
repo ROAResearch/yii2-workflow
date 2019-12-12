@@ -2,7 +2,7 @@
 
 namespace app\fixtures;
 
-use tecnocen\oauth2server\models\OauthClients;
+use roaresearch\yii2\oauth2server\models\OauthClients;
 
 /**
  * Fixture to load default clients.

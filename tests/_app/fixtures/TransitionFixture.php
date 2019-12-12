@@ -2,13 +2,13 @@
 
 namespace app\fixtures;
 
-use tecnocen\workflow\models\Transition;
+use roaresearch\yii2\workflow\models\Transition;
 use yii\test\ActiveFixture;
 
 /**
  * Fixture to load default transition.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class TransitionFixture extends ActiveFixture
 {

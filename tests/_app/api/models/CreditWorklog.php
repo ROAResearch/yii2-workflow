@@ -3,8 +3,7 @@
 namespace app\api\models;
 
 use app\models as base;
-use tecnocen\roa\hal\Contract;
-use tecnocen\roa\hal\ContractTrait;
+use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
 
 /**
  * ROA contract to handle credit_worklog records.

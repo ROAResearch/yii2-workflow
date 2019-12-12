@@ -8,11 +8,13 @@ use app\api\resources\{
     CreditAssignmentResource
 };
 
-class Version extends \tecnocen\roa\modules\ApiVersion
+class Version extends \roaresearch\yii2\roa\modules\ApiVersion
 {
-    const CREDIT_ROUTE = 'credit';
-    const WORKLOG_ROUTE = self::CREDIT_ROUTE . '/<process_id:\d+>/worklog';
-    const ASSIGNMENT_ROUTE = self::CREDIT_ROUTE . '/<process_id:\d+>/assignment';
+    public const CREDIT_ROUTE = 'credit';
+    public const WORKLOG_ROUTE = self::CREDIT_ROUTE
+        . '/<process_id:\d+>/worklog';
+    public const ASSIGNMENT_ROUTE = self::CREDIT_ROUTE
+        . '/<process_id:\d+>/assignment';
 
     /**
      * @inheritdoc

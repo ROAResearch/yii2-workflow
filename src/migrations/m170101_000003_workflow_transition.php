@@ -1,11 +1,13 @@
 <?php
 
-class m170101_000003_workflow_transition extends tecnocen\rmdb\migrations\CreateEntity
+use roaresearch\yii2\rmdb\migrations\CreateEntity;
+
+class m170101_000003_workflow_transition extends CreateEntity
 {
     /**
      * @inhertidoc
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         return 'workflow_transition';
     }
@@ -13,7 +15,7 @@ class m170101_000003_workflow_transition extends tecnocen\rmdb\migrations\Create
     /**
      * @inhertidoc
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             'source_stage_id' => $this->normalKey(),
@@ -25,7 +27,7 @@ class m170101_000003_workflow_transition extends tecnocen\rmdb\migrations\Create
     /**
      * @inhertidoc
      */
-    public function foreignKeys()
+    public function foreignKeys(): array
     {
         return [
             'source_stage_id' => 'workflow_stage',
@@ -36,7 +38,7 @@ class m170101_000003_workflow_transition extends tecnocen\rmdb\migrations\Create
     /**
      * @inhertidoc
      */
-    public function compositePrimaryKeys()
+    public function compositePrimaryKeys(): array
     {
         return ['source_stage_id', 'target_stage_id'];
     }
@@ -44,7 +46,7 @@ class m170101_000003_workflow_transition extends tecnocen\rmdb\migrations\Create
     /**
      * @inhertidoc
      */
-    public function compositeUniqueKeys()
+    public function compositeUniqueKeys(): array
     {
         return [['source_stage_id', 'name']];
     }

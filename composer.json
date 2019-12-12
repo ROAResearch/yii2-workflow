@@ -1,5 +1,5 @@
 {
-    "name": "tecnocen/yii2-workflow",
+    "name": "roaresearch/yii2-workflow",
     "description": "Yii 2 Library to configure workflows",
     "keywords": [
         "yii2",
@@ -30,36 +30,34 @@
     ],
     "require": {
         "php": "^7.1",
-        "tecnocen/yii2-roa": "~0.5.0",
-        "tecnocen/yii2-rmdb": "*",
+        "roaresearch/yii2-roa": "~2.0.0",
+        "roaresearch/yii2-rmdb": "~2.0.0",
         "yii2tech/ar-softdelete": "*"
     },
     "require-dev": {
-        "codeception/base": "^2.2.11",
-        "codeception/verify": "~1.0.0",
+        "codeception/base": "^3.1.0",
+        "codeception/verify": "~1.2.0",
         "flow/jsonpath": "~0.3",
-        "phpunit/php-code-coverage": "5.3.*",
-        "yiisoft/yii2-debug": "*"
+        "phpunit/php-code-coverage": "~5.0.0",
+        "squizlabs/php_codesniffer": "~3.5.0",
+        "yiisoft/yii2-debug": "~2.1.0"
     },
     "scripts": {
+        "migrate": "tests/_app/yii.php migrate --interactive=0",
         "deploy-tests": [
             "@composer update --prefer-stable",
-            "@php tests/_app/yii.php migrate 1 -p=@app/migrations --interactive=0",
-            "@php tests/_app/yii.php migrate -p=@tecnocen/oauth2server/migrations/tables --interactive=0",
-            "@php tests/_app/yii.php migrate -p=@tecnocen/workflow/migrations --interactive=0",
-            "@php tests/_app/yii.php migrate -p=@app/migrations --interactive=0",
-            "@php tests/_app/yii.php migrate -p=@yii/rbac/migrations --interactive=0"
+            "@composer migrate -- 1 -p=@app/migrations",
+            "@composer migrate -- -p=@roaresearch/yii2/oauth2server/migrations/tables",
+            "@composer migrate -- -p=@roaresearch/yii2/workflow/migrations",
+            "@composer migrate -- -p=@app/migrations",
+            "@composer migrate -- -p=@yii/rbac/migrations"
         ],
-        "run-tests": [
-            "@php vendor/bin/codecept run --steps"
-        ],
-        "run-coverage": [
-            "@php vendor/bin/codecept run --steps --coverage --coverage-xml"
-        ]
+        "run-tests": "vendor/bin/codecept run --steps",
+        "run-coverage": "@composer run-tests -- --coverage --coverage-xml"
     },
     "autoload": {
         "psr-4": {
-            "tecnocen\\workflow\\": "src/"
+            "roaresearch\\yii2\\workflow\\": "src/"
         }
     }
 }

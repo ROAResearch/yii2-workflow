@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\roa\models;
+namespace roaresearch\yii2\workflow\roa\models;
 
-use tecnocen\roa\hal\Contract;
-use tecnocen\roa\hal\ContractTrait;
-use tecnocen\workflow\models as base;
+use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
+use roaresearch\yii2\workflow\models as base;
 
 /**
  * ROA contract to handle workflow stage records.

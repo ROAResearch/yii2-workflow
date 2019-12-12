@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\roa\resources;
+namespace roaresearch\yii2\workflow\roa\resources;
 
-use tecnocen\roa\controllers\Resource;
-use tecnocen\workflow\roa\models\Stage;
-use tecnocen\workflow\roa\models\StageSearch;
+use roaresearch\yii2\roa\controllers\Resource;
+use roaresearch\yii2\workflow\roa\models\{Stage, StageSearch};
 
 /**
  * Resource to handle `Stage` records.

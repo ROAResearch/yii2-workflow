@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\roa\models;
+namespace roaresearch\yii2\workflow\roa\models;
 
-use tecnocen\roa\hal\Contract;
-use tecnocen\roa\hal\ContractTrait;
-use tecnocen\workflow\models as base;
+use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
+use roaresearch\yii2\workflow\models as base;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -29,7 +28,8 @@ class Workflow extends base\Workflow implements Contract
         return [
             'resourceName' => 'workflow',
             'checkAccess' => function ($params) {
-                if (isset($params['workflow_id'])
+                if (
+                    isset($params['workflow_id'])
                     && $this->id != $params['workflow_id']
                 ) {
                     throw new NotFoundHttpException(

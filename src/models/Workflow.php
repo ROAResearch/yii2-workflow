@@ -1,6 +1,6 @@
 <?php
 
-namespace tecnocen\workflow\models;
+namespace roaresearch\yii2\workflow\models;
 
 use yii\db\ActiveQuery;
 
@@ -12,7 +12,7 @@ use yii\db\ActiveQuery;
  *
  * @property Stage[] $stages
  */
-class Workflow extends \tecnocen\rmdb\models\PersistentEntity
+class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
 {
     /**
      * @var string full class name of the model to be used for the relation

@@ -1,8 +1,8 @@
 <?php
 
-namespace tecnocen\workflow\models;
+namespace roaresearch\yii2\workflow\models;
 
-use tecnocen\rmdb\models\Pivot;
+use roaresearch\yii2\rmdb\models\Pivot;
 use Yii;
 use yii\db\ActiveQuery;
 
@@ -17,7 +17,7 @@ abstract class Assignment extends Pivot
     /**
      * @return string class name for the process this worklog is attached to.
      */
-    protected abstract function processClass(): string;
+    abstract protected function processClass(): string;
 
     /**
      * @inheritdoc

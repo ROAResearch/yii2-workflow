@@ -1,17 +1,16 @@
 <?php
 
-namespace tecnocen\workflow\roa\models;
+namespace roaresearch\yii2\workflow\roa\models;
 
-use tecnocen\roa\ResourceSearch;
-use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
+use roaresearch\yii2\roa\ResourceSearch;
+use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
 
 /**
  * Contract to filter and sort collections of `Stage` records.
  *
  * @author Angel (Faryshta) Guevara <aguevara@alquimiadigital.mx>
  */
-class StageSearch extends Stage implements \tecnocen\roa\ResourceSearch
+class StageSearch extends Stage implements \roaresearch\yii2\roa\ResourceSearch
 {
     /**
      * @inhertidoc

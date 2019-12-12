@@ -2,13 +2,12 @@
 
 namespace app\api\resources;
 
-use app\api\models\Credit;
-use app\api\models\CreditSearch;
-use tecnocen\roa\controllers\Resource;
+use app\api\models\{Credit, CreditSearch};
+use roaresearch\yii2\roa\controllers\Resource;
 
 /**
  * CRUD resource for `Credit` records
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class CreditResource extends Resource
 {

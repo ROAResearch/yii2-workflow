@@ -1,12 +1,13 @@
 <?php
 
-class m170101_000004_workflow_transition_permission
-    extends tecnocen\rmdb\migrations\CreateEntity
+use roaresearch\yii2\rmdb\migrations\CreateEntity;
+
+class m170101_000004_workflow_transition_permission extends CreateEntity
 {
     /**
      * @inhertidoc
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         return 'workflow_transition_permission';
     }
@@ -14,7 +15,7 @@ class m170101_000004_workflow_transition_permission
     /**
      * @inhertidoc
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             'source_stage_id' => $this->normalKey(),
@@ -26,7 +27,7 @@ class m170101_000004_workflow_transition_permission
     /**
      * @inhertidoc
      */
-    public function foreignKeys()
+    public function foreignKeys(): array
     {
         return [
             'transition' => [
@@ -42,7 +43,7 @@ class m170101_000004_workflow_transition_permission
     /**
      * @inhertidoc
      */
-    public function compositePrimaryKeys()
+    public function compositePrimaryKeys(): array
     {
         return ['source_stage_id', 'target_stage_id', 'permission'];
     }

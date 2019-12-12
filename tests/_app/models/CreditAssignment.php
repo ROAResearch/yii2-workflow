@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class CreditAssignment extends \tecnocen\workflow\models\Assignment
+class CreditAssignment extends \roaresearch\yii2\workflow\models\Assignment
 {
     /**
      * @inheritdoc
@@ -15,7 +15,7 @@ class CreditAssignment extends \tecnocen\workflow\models\Assignment
     /**
      * @inheritdoc
      */
-   protected function processClass(): string
+    protected function processClass(): string
     {
         return Credit::class;
     }

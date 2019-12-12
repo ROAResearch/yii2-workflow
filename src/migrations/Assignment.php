@@ -1,11 +1,11 @@
 <?php
 
-namespace tecnocen\workflow\migrations;
+namespace roaresearch\yii2\workflow\migrations;
 
 /**
  * Base Migration for creating assignment tables for process.
  */
-abstract class Assignment extends \tecnocen\rmdb\migrations\CreatePivot
+abstract class Assignment extends \roaresearch\yii2\rmdb\migrations\CreatePivot
 {
     /**
      * @var string suffix attached at the end of the process table.
@@ -15,12 +15,12 @@ abstract class Assignment extends \tecnocen\rmdb\migrations\CreatePivot
     /**
      * @return string name of the table to which the assignment will be attached.
      */
-    abstract public function getProcessTableName();
+    abstract public function getProcessTableName(): string;
 
     /**
      * @inhertidoc
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         return $this->getProcessTableName() . $this->assignmentSuffix;
     }
@@ -28,7 +28,7 @@ abstract class Assignment extends \tecnocen\rmdb\migrations\CreatePivot
     /**
      * @inhertidoc
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             'process_id' => $this->normalKey(),
@@ -39,7 +39,7 @@ abstract class Assignment extends \tecnocen\rmdb\migrations\CreatePivot
     /**
      * @inhertidoc
      */
-    public function foreignKeys()
+    public function foreignKeys(): array
     {
         return [
            'process_id' => $this->getProcessTableName(),
@@ -49,9 +49,8 @@ abstract class Assignment extends \tecnocen\rmdb\migrations\CreatePivot
     /**
      * @inhertidoc
      */
-    public function compositePrimaryKeys()
+    public function compositePrimaryKeys(): array
     {
         return ['process_id', 'user_id'];
     }
-
 }

@@ -1,13 +1,11 @@
 <?php
 
-namespace tecnocen\workflow\migrations;
+namespace roaresearch\yii2\workflow\migrations;
 
 /**
  * Base Migration for creating worklog tables for process.
- *
- *
  */
-abstract class WorkLog extends \tecnocen\rmdb\migrations\CreatePivot
+abstract class WorkLog extends \roaresearch\yii2\rmdb\migrations\CreatePivot
 {
     /**
      * @var string suffix attached at the end of the process table.
@@ -17,12 +15,12 @@ abstract class WorkLog extends \tecnocen\rmdb\migrations\CreatePivot
     /**
      * @return string name of the table to which the worklog will be attached.
      */
-    abstract public function getProcessTableName();
+    abstract public function getProcessTableName(): string;
 
     /**
      * @inhertidoc
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         return $this->getProcessTableName() . $this->worklogSuffix;
     }
@@ -30,7 +28,7 @@ abstract class WorkLog extends \tecnocen\rmdb\migrations\CreatePivot
     /**
      * @inhertidoc
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             'id' => $this->primaryKey(),
@@ -43,7 +41,7 @@ abstract class WorkLog extends \tecnocen\rmdb\migrations\CreatePivot
     /**
      * @inhertidoc
      */
-    public function foreignKeys()
+    public function foreignKeys(): array
     {
         return [
             'stage_id' => 'workflow_stage',

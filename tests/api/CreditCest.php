@@ -1,16 +1,15 @@
 <?php
 
-use Codeception\Example;
-use Codeception\Util\HttpCode;
-use app\fixtures\CreditFixture;
-use app\fixtures\OauthAccessTokensFixture;
+use app\fixtures\{CreditFixture, OauthAccessTokensFixture};
+use Codeception\{Example, Util\HttpCode};
+use roaresearch\yii2\roa\test\AbstractResourceCest;
 
 /**
  * Cest to stage resource.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class CreditCest extends \tecnocen\roa\test\AbstractResourceCest
+class CreditCest extends AbstractResourceCest
 {
     protected function authToken(ApiTester $I)
     {

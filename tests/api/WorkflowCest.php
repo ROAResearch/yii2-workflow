@@ -1,16 +1,15 @@
 <?php
 
-use Codeception\Example;
-use Codeception\Util\HttpCode;
-use app\fixtures\OauthAccessTokensFixture;
-use app\fixtures\WorkflowFixture;
+use app\fixtures\{OauthAccessTokensFixture, WorkflowFixture};
+use Codeception\{Example, Util\HttpCode};
+use roaresearch\yii2\roa\test\AbstractResourceCest;
 
 /**
  * Cest to workflow resource.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class WorkflowCest extends \tecnocen\roa\test\AbstractResourceCest
+class WorkflowCest extends AbstractResourceCest
 {
     protected function authToken(ApiTester $I)
     {

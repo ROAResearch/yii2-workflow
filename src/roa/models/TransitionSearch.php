@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\roa\models;
+namespace roaresearch\yii2\workflow\roa\models;
 
-use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
-use tecnocen\roa\ResourceSearch;
+use roaresearch\yii2\roa\ResourceSearch;
+use yii\{data\ActiveDataProvider, NotFoundHttpException};
 
 /**
  * Contract to filter and sort collections of `Transition` records.
@@ -36,7 +35,8 @@ class TransitionSearch extends Transition implements ResourceSearch
         if (!$this->validate()) {
             return null;
         }
-        if (null === $this->sourceStage
+        if (
+            null === $this->sourceStage
             || $this->sourceStage->workflow_id != $params['workflow_id']
         ) {
             throw new NotFoundHttpException('Unexistant stage path.');

@@ -2,7 +2,7 @@
 
 namespace app\api\models;
 
-use tecnocen\roa\ResourceSearch;
+use roaresearch\yii2\roa\ResourceSearch;
 use yii\data\ActiveDataProvider;
 
 class CreditSearch extends Credit implements ResourceSearch

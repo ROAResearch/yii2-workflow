@@ -8,7 +8,7 @@ use yii\test\ActiveFixture;
 /**
  * Fixture to load default credit.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class CreditAssignmentFixture extends ActiveFixture
 {

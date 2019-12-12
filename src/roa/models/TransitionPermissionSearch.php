@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\roa\models;
+namespace roaresearch\yii2\workflow\roa\models;
 
-use tecnocen\roa\ResourceSearch;
-use yii\data\ActiveDataProvider;
-use yii\web\NotFoundHttpException;
+use roaresearch\yii2\roa\ResourceSearch;
+use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
 
 /**
  * Contract to filter and sort collections of `TransitionPermission` records.
@@ -36,7 +35,8 @@ class TransitionPermissionSearch extends TransitionPermission implements
         if (!$this->validate()) {
             return null;
         }
-        if (null === $this->transition
+        if (
+            null === $this->transition
             || $this->sourceStage->workflow_id != $params['workflow_id']
         ) {
             throw new NotFoundHttpException('Unexistant permission path.');

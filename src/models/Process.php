@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\models;
+namespace roaresearch\yii2\workflow\models;
 
-use tecnocen\rmdb\models\Entity;
-use yii\base\InvalidConfigException;
-use yii\db\ActiveQuery;
+use roaresearch\yii2\rmdb\models\Entity;
+use yii\{base\InvalidConfigException, db\ActiveQuery};
 
 /**
  * Model class for process which change stages depending on a worklow
@@ -42,18 +41,18 @@ abstract class Process extends Entity
      * @return string full class name of the class to be used to store the
      * assignment records.
      */
-    protected abstract function assignmentClass(): string;
+    abstract protected function assignmentClass(): string;
 
     /**
      * @return string full class name of the class to be used to store the
      * WorkLog records.
      */
-    protected abstract function workLogClass(): string;
+    abstract protected function workLogClass(): string;
 
     /**
      * @return int the id of the workflow this process belongs to.
      */
-    public abstract function getWorkflowId(): int;
+    abstract public function getWorkflowId(): int;
 
     /**
      * Determines if the current process record has the need of an initial
@@ -79,7 +78,7 @@ abstract class Process extends Entity
     /**
      * @inheritdoc
      */
-    public function load($data, $formName = null)
+    public function load($data, ?string $formName = null)
     {
         if ($this->hasInitialWorklog()) {
             $logLoad = $this->initialWorkLog->load($data, $formName);
@@ -98,8 +97,10 @@ abstract class Process extends Entity
      */
     public function userAssigned(?int $userId): bool
     {
-        return !$this->getAssignments()->exists() || $this->getAssignments()
-            ->andWhere(['user_id' => $userId]);
+        return !$this->getAssignments()->exists() // no one is assigned
+            || $this->getAssignments()
+                ->andWhere(['user_id' => $userId])
+                ->exists();
     }
 
     /**
@@ -109,10 +110,9 @@ abstract class Process extends Entity
     {
         $parentValidate = parent::validate($attributeNames, $clearErrors);
         if ($this->hasInitialWorklog()) {
-            if ($this->initialWorkLog->validate(
-                $attributeNames,
-                $clearErrors
-            )) {
+            if (
+                $this->initialWorkLog->validate($attributeNames, $clearErrors)
+            ) {
                 return $parentValidate;
             }
 

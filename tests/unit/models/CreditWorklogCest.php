@@ -3,16 +3,18 @@
 namespace models;
 
 use UnitTester;
-use app\fixtures\CreditWorklogFixture;
-use app\models\CreditWorklog;
-use app\models\User;
+use app\{
+    fixtures\CreditWorklogFixture,
+    models\CreditWorklog,
+    models\User
+};
 use Yii;
 use yii\web\ForbiddenHttpException;
 
 /**
  * Cest to credit worklog model.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class CreditWorklogCest
 {
@@ -28,7 +30,6 @@ class CreditWorklogCest
 
         $creditWorklog->stage_id = 5;
         $I->assertTrue($creditWorklog->validate(['stage_id']));
-
     }
 
     /**

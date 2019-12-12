@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\roa\resources;
+namespace roaresearch\yii2\workflow\roa\resources;
 
-use tecnocen\roa\controllers\Resource;
-use tecnocen\workflow\roa\models\Transition;
-use tecnocen\workflow\roa\models\TransitionSearch;
+use roaresearch\yii2\roa\controllers\Resource;
+use roaresearch\yii2\workflow\roa\models\{Transition, TransitionSearch};
 
 /**
  * Resource to handle `Transition` records.
