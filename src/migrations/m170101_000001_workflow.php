@@ -1,11 +1,13 @@
 <?php
 
-class m170101_000001_workflow extends tecnocen\rmdb\migrations\CreatePersistentEntity
+use roaresearch\yii2\rmdb\migrations\CreatePersistentEntity;
+
+class m170101_000001_workflow extends CreatePersistentEntity
 {
     /**
      * @inhertidoc
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         return 'workflow';
     }
@@ -13,7 +15,7 @@ class m170101_000001_workflow extends tecnocen\rmdb\migrations\CreatePersistentE
     /**
      * @inhertidoc
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             'id' => $this->primaryKey(),

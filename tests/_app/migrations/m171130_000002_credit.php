@@ -1,13 +1,15 @@
 <?php
 
-class m171130_000002_credit extends tecnocen\rmdb\migrations\CreatePersistentEntity
+use roaresearch\yii2\rmdb\migrations\CreatePersistentEntity;
+
+class m171130_000002_credit extends CreatePersistentEntity
 {
-    public function getTableName()
+    public function getTableName(): string
     {
         return 'credit';
     }
 
-    public function columns()
+    public function columns(): array
     {
         return [
             'id' => $this->primaryKey(),
@@ -15,7 +17,7 @@ class m171130_000002_credit extends tecnocen\rmdb\migrations\CreatePersistentEnt
         ];
     }
 
-    public function foreignKeys()
+    public function foreignKeys(): array
     {
         return [
             'workflow_id' => ['table' => 'workflow']

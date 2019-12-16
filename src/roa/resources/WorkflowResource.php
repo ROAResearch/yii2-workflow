@@ -1,10 +1,9 @@
 <?php
 
-namespace tecnocen\workflow\roa\resources;
+namespace roaresearch\yii2\workflow\roa\resources;
 
-use tecnocen\roa\controllers\Resource;
-use tecnocen\workflow\roa\models\Workflow;
-use tecnocen\workflow\roa\models\WorkflowSearch;
+use roaresearch\yii2\roa\controllers\Resource;
+use roaresearch\yii2\workflow\roa\models\{Workflow, WorkflowSearch};
 
 /**
  * Resource to handle `Workflow` records

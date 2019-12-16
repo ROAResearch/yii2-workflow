@@ -1,20 +1,23 @@
 <?php
 
-namespace tecnocen\workflow\roa\modules;
+namespace roaresearch\yii2\workflow\roa\modules;
 
-use tecnocen\workflow\roa\resources\{
+use roaresearch\yii2\workflow\roa\resources\{
     PermissionResource,
     StageResource,
     TransitionResource,
     WorkflowResource
 };
 
-class Version extends \tecnocen\roa\modules\ApiVersion
+class Version extends \roaresearch\yii2\roa\modules\ApiVersion
 {
-    const WORKFLOW_ROUTE = 'workflow';
-    const STAGE_ROUTE = self::WORKFLOW_ROUTE . '/<workflow_id:\d+>/stage';
-    const TRANSITION_ROUTE = self::STAGE_ROUTE . '/<source_stage_id:\d+>/transition';
-    const PERMISSION_ROUTE = self::TRANSITION_ROUTE . '/<target_stage_id:\d+>/permission';
+    public const WORKFLOW_ROUTE = 'workflow';
+    public const STAGE_ROUTE = self::WORKFLOW_ROUTE
+        . '/<workflow_id:\d+>/stage';
+    public const TRANSITION_ROUTE = self::STAGE_ROUTE
+        . '/<source_stage_id:\d+>/transition';
+    public const PERMISSION_ROUTE = self::TRANSITION_ROUTE
+        . '/<target_stage_id:\d+>/permission';
 
     /**
      * @inheritdoc

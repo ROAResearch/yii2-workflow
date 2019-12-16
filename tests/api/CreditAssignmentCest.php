@@ -1,16 +1,15 @@
 <?php
 
-use Codeception\Example;
-use Codeception\Util\HttpCode;
-use app\fixtures\CreditAssignmentFixture;
-use app\fixtures\OauthAccessTokensFixture;
+use app\fixtures\{CreditAssignmentFixture, OauthAccessTokensFixture};
+use Codeception\{Example, Util\HttpCode};
+use roaresearch\yii2\roa\test\AbstractResourceCest;
 
 /**
  * Cest to stage resource.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@rinvernaderolabs.com>
  */
-class CreditAssignmentCest extends \tecnocen\roa\test\AbstractResourceCest
+class CreditAssignmentCest extends AbstractResourceCest
 {
     protected function authToken(ApiTester $I)
     {
@@ -220,7 +219,7 @@ class CreditAssignmentCest extends \tecnocen\roa\test\AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function recordJsonType()
+    protected function recordJsonType(): array
     {
         return [
             'process_id' => 'integer:>0|string',
@@ -231,7 +230,7 @@ class CreditAssignmentCest extends \tecnocen\roa\test\AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function getRoutePattern()
+    protected function getRoutePattern(): string
     {
         return 'v1/credit/<process_id:\d+>/assignment';
     }

@@ -1,16 +1,15 @@
 <?php
 
-use Codeception\Example;
-use Codeception\Util\HttpCode;
-use app\fixtures\OauthAccessTokensFixture;
-use app\fixtures\StageFixture;
+use app\fixtures\{OauthAccessTokensFixture, StageFixture};
+use Codeception\{Example, Util\HttpCode};
+use roaresearch\yii2\roa\test\AbstractResourceCest;
 
 /**
  * Cest to stage resource.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class StageCest extends \tecnocen\roa\test\AbstractResourceCest
+class StageCest extends AbstractResourceCest
 {
     protected function authToken(ApiTester $I)
     {
@@ -272,7 +271,7 @@ class StageCest extends \tecnocen\roa\test\AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function recordJsonType()
+    protected function recordJsonType(): array
     {
         return [
             'id' => 'integer:>0',
@@ -283,7 +282,7 @@ class StageCest extends \tecnocen\roa\test\AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function getRoutePattern()
+    protected function getRoutePattern(): string
     {
         return 'w1/workflow/<workflow_id:\d+>/stage';
     }

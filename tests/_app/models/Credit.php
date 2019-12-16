@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use tecnocen\workflow\models\Workflow;
+use roaresearch\yii2\workflow\models\Workflow;
 
 /**
  * This is the model class for table `{{%credit}}`.
@@ -11,7 +11,7 @@ use tecnocen\workflow\models\Workflow;
  * @property integer $id
  * @property string $credit
  */
-class Credit extends \tecnocen\workflow\models\Process
+class Credit extends \roaresearch\yii2\workflow\models\Process
 {
     /**
      * @inheritdoc
@@ -26,7 +26,7 @@ class Credit extends \tecnocen\workflow\models\Process
         return CreditAssignment::class;
     }
 
-    protected function workLogClass():string
+    protected function workLogClass(): string
     {
         return CreditWorklog::class;
     }

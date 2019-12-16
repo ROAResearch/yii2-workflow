@@ -1,12 +1,15 @@
 Yii2 Workflow
 ==============
+
 Library to dynamically handle workflows in a database with ROA support.
 
-[![Latest Stable Version](https://poser.pugx.org/tecnocen/yii2-workflow/v/stable)](https://packagist.org/packages/tecnocen/yii2-workflow)
-[![Total Downloads](https://poser.pugx.org/tecnocen/yii2-workflow/downloads)](https://packagist.org/packages/tecnocen/yii2-workflow)
+[![Latest Stable Version](https://poser.pugx.org/roaresearch/yii2-workflow/v/stable)](https://packagist.org/packages/roaresearch/yii2-workflow)
+[![Total Downloads](https://poser.pugx.org/roaresearch/yii2-workflow/downloads)](https://packagist.org/packages/roaresearch/yii2-workflow)
+[![Code Coverage](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/?branch=master)
 
-
-Travis [![Build Status Travis](https://travis-ci.org/tecnocen-com/yii2-workflow.svg?branch=master&style=flat?style=for-the-badge)](https://travis-ci.org/tecnocen-com/yii2-workflow)
+Scrutinizer [![Build Status Scrutinizer](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/badges/build.png?b=master&style=flat)](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/build-status/master)
+Travis [![Build Status Travis](https://travis-ci.org/roaresearch/yii2-workflow.svg?branch=master&style=flat?style=for-the-badge)](https://travis-ci.org/roaresearch/yii2-workflow)
 
 ## Getting Started
 
@@ -23,16 +26,16 @@ repository on the next step.
 ### Installation
 ----------------
 
-You can use composer to install the library `tecnocen/yii2-workflow` by running
+You can use composer to install the library `roaresearch/yii2-workflow` by running
 the command;
 
-`composer require tecnocen/yii2-workflow`
+`composer require roaresearch/yii2-workflow`
 
 or edit the `composer.json` file
 
 ```json
 require: {
-    "tecnocen/yii2-workflow": "*",
+    "roaresearch/yii2-workflow": "*",
 }
 ```
 
@@ -40,7 +43,7 @@ require: {
 
 Then run the required migrations
 
-`php yii migrate/up -p=@tecnocen/workflow/migrations`
+`php yii migrate/up -p=@roaresearch/workflow/migrations`
 
 Which will install the following table structure
 
@@ -54,11 +57,11 @@ The ROA support is very simple and can be done by just adding a module version
 to the api container which will be used to hold the resources.
 
 ```php
-class Api extends \tecnocen\roa\modules\ApiContainer
+class Api extends \roaresearch\yii2\roa\modules\ApiContainer
 {
     public $versions = [
        // other versions
-       'w1' => ['class' => 'tecnocen\workflow\roa\modules\Version'],
+       'w1' => ['class' => 'roaresearch\yii2\workflow\roa\modules\Version'],
    ];
 }
 ```
@@ -85,12 +88,12 @@ migration templates.
 ```php
 class m170101_010101_credit extends EntityTable
 {
-    public function getTableName()
+    public function getTableName(): string
     {
         return 'credit';
     }
 
-    public function columns()
+    public function columns(): array
     {
          return [
              'id' => $this->primaryKey(),
@@ -99,19 +102,19 @@ class m170101_010101_credit extends EntityTable
          ];
     }
 
-    public function foreignKeys()
+    public function foreignKeys(): array
     {
         return [
-            'workflow_id' => ['table' => 'tecnocen_workflow'];
+            'workflow_id' => ['table' => 'workflow'];
         ];
     }
 }
 ```
 
 ```php
-class m170101_010102_credit_worklog extends \tecnocen\workflow\migrations\WorkLog
+class m170101_010102_credit_worklog extends \roaresearch\yii2\workflow\migrations\WorkLog
 {
-    public function getProcessTableName()
+    public function getProcessTableName(): string
     {
         return 'credit';
     }
@@ -121,14 +124,14 @@ class m170101_010102_credit_worklog extends \tecnocen\workflow\migrations\WorkLo
 After running the migrations its necessary to create Active Record models.
 
 ```php
-class Credit extends \tecnocen\workflow\models\Process
+class Credit extends \roaresearch\yii2\workflow\models\Process
 {
-    protected function workflowClass()
+    protected function workflowClass(): string
     {
         return CreditWorklog::class;
     }
 
-    public function getWorkflowId()
+    public function getWorkflowId(): int
     {
         return $this->workflow_id;
     }
@@ -143,9 +146,9 @@ class Credit extends \tecnocen\workflow\models\Process
 ```
 
 ```php
-class CreditWorkLog extends \tecnocen\workflow\models\WorkLog
+class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
 {
-    public static function processClass()
+    public static function processClass(): string
     {
         return Credit::class;
     }
@@ -171,7 +174,7 @@ public $resources = [
 
 ## Running the tests
 
-This library contains tools to set up a testing environment using composer scripts, for more information see [Testing Environment](https://github.com/tecnocen-com/yii2-workflow/blob/master/CONTRIBUTING.md) section.
+This library contains tools to set up a testing environment using composer scripts, for more information see [Testing Environment](https://github.com/roaresearch/yii2-workflow/blob/master/CONTRIBUTING.md) section.
 
 ### Break down into end to end tests
 
@@ -216,33 +219,25 @@ TO DO
 
 ## Code of Conduct
 
-Please read [CODE_OF_CONDUCT.md](https://github.com/tecnocen-com/yii2-workflow/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.
+Please read [CODE_OF_CONDUCT.md](https://github.com/roaresearch/yii2-workflow/blob/master/CODE_OF_CONDUCT.md) for details on our code of conduct.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/tecnocen-com/yii2-workflow/blob/master/CONTRIBUTING.md) for details on the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/roaresearch/yii2-workflow/blob/master/CONTRIBUTING.md) for details on the process for submitting pull requests to us.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/tecnocen-com/yii2-workflow/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ROAResearch/yii2-roa/tags).
 
-_Considering [SemVer](http://semver.org/) for versioning rules 9, 10 and 11 talk about pre-releases, they will not be used within the Tecnocen-com._
+_Considering [SemVer](http://semver.org/) for versioning rules 9, 10 and 11 talk about pre-releases, they will not be used within the ROAResearch._
 
 ## Authors
 
-* [**Angel Guevara**](https://github.com/Faryshta) - *Initial work* - [Tecnocen.com](https://github.com/Tecnocen-com)
-* [**Carlos Llamosas**](https://github.com/neverabe) - *Initial work* - [Tecnocen.com](https://github.com/Tecnocen-com)
+* [**Angel Guevara**](https://github.com/Faryshta) - Initial work
+* [**Carlos Llamosas**](https://github.com/neverabe) - Initial work
 
-See also the list of [contributors](https://github.com/tecnocen-com/yii2-workflow/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/ROAResearch/yii2-roa/graphs/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* TO DO - Hat tip to anyone who's code was used
-* TO DO - Inspiration
-* TO DO - etc
-
-[![yii2-workflow](https://img.shields.io/badge/Powered__by-Tecnocen.com-orange.svg?style=for-the-badge)](https://www.tecnocen.com/)

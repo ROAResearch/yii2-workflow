@@ -17,7 +17,7 @@ return yii\helpers\ArrayHelper::merge(
         'components' => [
             'assetManager' => [
                'basePath' => dirname(__DIR__) . '/assets',
-           ],
+            ],
         ]
     ]
 );

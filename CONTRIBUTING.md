@@ -1,11 +1,11 @@
-Contributing to Tecnocen Yii2 Workflow
+Contributing to Yii2 Workflow
 ======================================
 
 :+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
 
-The following is a set of guidelines for contributing to Tecnocen and its
+The following is a set of guidelines for contributing to ROAResearch and its
 packages, which are hosted in the
-[Tecnocen Organization](https://github.com/tecnocen-com) on GitHub. These
+[ROAResearch Organization](https://github.com/ROAResearch) on GitHub. These
 are mostly guidelines, not rules. Use your best judgment, and feel free to
 propose changes to this document in a pull request.
 
@@ -16,7 +16,7 @@ We are currently piggy backing from
 [Yii2 Extensions Forum](http://www.yiiframework.com/forum/index.php/forum/13-extensions/)
 you can make questions there where other Yii2 devs might see it and answer it.
  
-If you need profesional support please feel free to contact support@tecnocen.com with the following information.
+If you need profesional support please feel free to contact roaresearch@gmail.com with the following information.
 
 - What steps will reproduce the problem?
 - What is the expected result?
@@ -31,7 +31,7 @@ Bugs are tracked as [GitHub issues](https://guides.github.com/features/issues/).
 Its required for you to follow this steps when submitting a bug:
 
 1. Determine its not already reported by searching existing issues
-   https://github.com/search?q=+is%3Aissue+user%3Atecnocen-com
+   https://github.com/search?q=+is%3Aissue+user%3AROAResearch
 
 2. Determine its not an issue of any of the dependencies of this library such as
    [Yii2](https://github.com/search?q=+is%3Aissue+user%3Ayiisoft)
@@ -67,7 +67,7 @@ required for you to follow this steps when suggesting a change.
    on the previous step.
 
 4. Check it was not already suggested
-   https://github.com/search?q=+is%3Aissue+user%3Atecnocen-com
+   https://github.com/search?q=+is%3Aissue+user%3AROAResearch
 
 5. If the enhancement was not suggested already then provide enough information
    to understand and develop the enhacenment

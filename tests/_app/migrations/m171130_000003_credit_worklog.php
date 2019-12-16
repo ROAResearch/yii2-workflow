@@ -1,8 +1,10 @@
 <?php
 
-class m171130_000003_credit_worklog extends \tecnocen\workflow\migrations\WorkLog
+use roaresearch\yii2\workflow\migrations\WorkLog;
+
+class m171130_000003_credit_worklog extends WorkLog
 {
-    public function getProcessTableName()
+    public function getProcessTableName(): string
     {
         return 'credit';
     }

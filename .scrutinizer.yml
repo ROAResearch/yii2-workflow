@@ -147,8 +147,7 @@ tools:
     php_code_coverage: true
     php_code_sniffer:
         config:
-            standard: PSR2
-            sniffs: { generic: { formatting: { multiple_statement_alignment_sniff: false } } }
+            standard: phpcs.xml
     php_cpd:
         enabled: false # solicitado por scrutinizer para usar php_analyzer
         excluded_dirs: [vendor, tests]

@@ -2,13 +2,13 @@
 
 namespace app\fixtures;
 
-use tecnocen\workflow\models\TransitionPermission;
+use roaresearch\yii2\workflow\models\TransitionPermission;
 use yii\test\ActiveFixture;
 
 /**
  * Fixture to load default transition_permission.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class TransitionPermissionFixture extends ActiveFixture
 {

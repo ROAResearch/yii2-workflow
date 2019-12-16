@@ -1,6 +1,6 @@
 <?php
 
-namespace tecnocen\workflow\models;
+namespace roaresearch\yii2\workflow\models;
 
 use yii\db\ActiveQuery;
 
@@ -15,10 +15,10 @@ use yii\db\ActiveQuery;
  * @property Stage $sourceStage
  * @property Stage $targetStage
  */
-class TransitionPermission extends \tecnocen\rmdb\models\Entity
+class TransitionPermission extends \roaresearch\yii2\rmdb\models\Entity
 {
-    const SCENARIO_UPDATE = 'update';
-    const SCENARIO_CREATE = 'create';
+    public const SCENARIO_UPDATE = 'update';
+    public const SCENARIO_CREATE = 'create';
 
     /**
      * @var string full class name of the model to be used for the relations
@@ -43,7 +43,7 @@ class TransitionPermission extends \tecnocen\rmdb\models\Entity
     /**
      * @inheritdoc
      */
-    protected function attributeTypecast()
+    protected function attributeTypecast(): ?array
     {
         return parent::attributeTypecast() + [
             'source_stage_id' => 'integer',

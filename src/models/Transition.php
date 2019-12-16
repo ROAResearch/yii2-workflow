@@ -1,6 +1,6 @@
 <?php
 
-namespace tecnocen\workflow\models;
+namespace roaresearch\yii2\workflow\models;
 
 use Yii;
 use yii\db\ActiveQuery;
@@ -16,10 +16,10 @@ use yii\db\ActiveQuery;
  * @property Stage $targetStage
  * @property TransitionPermission[] $permissions
  */
-class Transition extends \tecnocen\rmdb\models\Entity
+class Transition extends \roaresearch\yii2\rmdb\models\Entity
 {
-    const SCENARIO_UPDATE = 'update';
-    const SCENARIO_CREATE = 'create';
+    public const SCENARIO_UPDATE = 'update';
+    public const SCENARIO_CREATE = 'create';
 
     /**
      * @var string full class name of the model to be used for the relations
@@ -44,7 +44,7 @@ class Transition extends \tecnocen\rmdb\models\Entity
     /**
      * @inheritdoc
      */
-    protected function attributeTypecast()
+    protected function attributeTypecast(): ?array
     {
         return parent::attributeTypecast() + [
             'source_stage_id' => 'integer',
@@ -129,7 +129,7 @@ class Transition extends \tecnocen\rmdb\models\Entity
      * @param Process $process
      * @return bool
      */
-    public function userCan(?int $userId, Process  $process): bool
+    public function userCan(?int $userId, Process $process): bool
     {
         if (!$this->getPermissions()->exists()) {
             return true;
@@ -138,10 +138,12 @@ class Transition extends \tecnocen\rmdb\models\Entity
         $authManager = Yii::$app->authManager;
 
         foreach ($this->permissions as $permission) {
-            if (!$authManager->checkAccess($userId, $permission->permission, [
-                'transition' => $this,
-                'process' => $process
-            ])) {
+            if (
+                !$authManager->checkAccess($userId, $permission->permission, [
+                    'transition' => $this,
+                    'process' => $process,
+                ])
+            ) {
                 return false;
             }
         }

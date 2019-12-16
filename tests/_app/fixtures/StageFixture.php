@@ -2,13 +2,13 @@
 
 namespace app\fixtures;
 
-use tecnocen\workflow\models\Stage;
+use roaresearch\yii2\workflow\models\Stage;
 use yii\test\ActiveFixture;
 
 /**
  * Fixture to load default stage.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class StageFixture extends ActiveFixture
 {

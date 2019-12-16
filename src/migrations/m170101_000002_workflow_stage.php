@@ -1,11 +1,13 @@
 <?php
 
-class m170101_000002_workflow_stage extends tecnocen\rmdb\migrations\CreatePersistentEntity
+use roaresearch\yii2\rmdb\migrations\CreatePersistentEntity;
+
+class m170101_000002_workflow_stage extends CreatePersistentEntity
 {
     /**
      * @inhertidoc
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         return 'workflow_stage';
     }
@@ -13,7 +15,7 @@ class m170101_000002_workflow_stage extends tecnocen\rmdb\migrations\CreatePersi
     /**
      * @inhertidoc
      */
-    public function columns()
+    public function columns(): array
     {
         return [
             'id' => $this->primaryKey(),
@@ -28,7 +30,7 @@ class m170101_000002_workflow_stage extends tecnocen\rmdb\migrations\CreatePersi
     /**
      * @inhertidoc
      */
-    public function foreignKeys()
+    public function foreignKeys(): array
     {
         return ['workflow_id' => 'workflow'];
     }
@@ -36,7 +38,7 @@ class m170101_000002_workflow_stage extends tecnocen\rmdb\migrations\CreatePersi
     /**
      * @inhertidoc
      */
-    public function compositeUniqueKeys()
+    public function compositeUniqueKeys(): array
     {
         return [['workflow_id', 'name']];
     }

@@ -3,11 +3,11 @@
 namespace app\api\resources;
 
 use app\api\models\CreditWorklog;
-use tecnocen\roa\controllers\Resource;
+use roaresearch\yii2\roa\controllers\Resource;
 
 /**
  * CRUD resource for `Credit Worklog` records
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class CreditWorklogResource extends Resource
 {

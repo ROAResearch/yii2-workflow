@@ -1,7 +1,15 @@
 Yii2 Workflow Change Log
-==========================
+========================
+
+2.0.0
+-----
+
+- Brk: Change namespaces and PSR12 support
+- Enh: Default support for code sniffer
+
 
 0.4.0 July 13, 2019
+-------------------
 
 - Brk: Methods now use the typecast supported in php 7.1
 

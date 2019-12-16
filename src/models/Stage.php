@@ -1,6 +1,6 @@
 <?php
 
-namespace tecnocen\workflow\models;
+namespace roaresearch\yii2\workflow\models;
 
 use yii\db\ActiveQuery;
 
@@ -17,7 +17,7 @@ use yii\db\ActiveQuery;
  * @property Workflow $workflow
  * @property Transition[] $transitions
  */
-class Stage extends \tecnocen\rmdb\models\PersistentEntity
+class Stage extends \roaresearch\yii2\rmdb\models\PersistentEntity
 {
     /**
      * @var string full class name of the model to be used for the relation
@@ -42,7 +42,7 @@ class Stage extends \tecnocen\rmdb\models\PersistentEntity
     /**
      * @inheritdoc
      */
-    protected function attributeTypecast()
+    protected function attributeTypecast(): ?array
     {
         return parent::attributeTypecast() + [
             'id' => 'integer',

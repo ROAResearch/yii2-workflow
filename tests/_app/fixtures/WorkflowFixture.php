@@ -2,13 +2,13 @@
 
 namespace app\fixtures;
 
-use tecnocen\workflow\models\Workflow;
+use roaresearch\yii2\workflow\models\Workflow;
 use yii\test\ActiveFixture;
 
 /**
  * Fixture to load default workflow.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
 class WorkflowFixture extends ActiveFixture
 {

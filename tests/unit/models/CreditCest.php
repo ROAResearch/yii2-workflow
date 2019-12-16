@@ -2,8 +2,7 @@
 
 namespace models;
 
-use app\fixtures\CreditWorklogFixture;
-use app\models\Credit;
+use app\{fixtures\CreditWorklogFixture, models\Credit};
 use Codeception\Example;
 use UnitTester;
 
@@ -14,8 +13,8 @@ class CreditCest
         $I->haveFixtures([
             'credit_worklog' => [
                 'class' => CreditWorklogFixture::class,
-	        ],
-	    ]);
+            ],
+        ]);
     }
 
     /**
@@ -62,9 +61,9 @@ class CreditCest
     public function save(UnitTester $I, Example $example)
     {
         $credit = new Credit();
-	    $credit->load($example['data'], '');
-	    $credit->save();
-	    $I->assertEmpty($credit->getFirstErrors());
+        $credit->load($example['data'], '');
+        $credit->save();
+        $I->assertEmpty($credit->getFirstErrors());
         $I->assertTrue($credit->save());
         $I->assertNotEmpty($credit->workLogs);
         $I->assertNotEmpty($credit->activeWorkLog);

@@ -1,12 +1,14 @@
 <?php
 
-namespace tecnocen\workflow\models;
+namespace roaresearch\yii2\workflow\models;
 
-use tecnocen\rmdb\models\Pivot;
+use roaresearch\yii2\rmdb\models\Pivot;
 use Yii;
-use yii\db\ActiveQuery;
-use yii\web\ForbiddenHttpException;
-use yii\web\BadRequestHttpException;
+use yii\{
+    db\ActiveQuery,
+    web\ForbiddenHttpException,
+    web\BadRequestHttpException
+};
 
 /**
  * @property int $id
@@ -17,13 +19,13 @@ use yii\web\BadRequestHttpException;
  */
 abstract class WorkLog extends Pivot
 {
-    const SCENARIO_INITIAL = 'initial';
-    const SCENARIO_FLOW = 'flow';
+    public const SCENARIO_INITIAL = 'initial';
+    public const SCENARIO_FLOW = 'flow';
 
     /**
      * @return string class name for the process this worklog is attached to.
      */
-    protected abstract function processClass(): string;
+    abstract protected function processClass(): string;
 
     /**
      * @inheritdoc
@@ -48,9 +50,9 @@ abstract class WorkLog extends Pivot
                 'targetClass' => Stage::class,
                 'filter' => function ($query) {
                     $query->andWhere(['initial' => true]);
-		        },
+                },
                 'on' => [self::SCENARIO_INITIAL],
-		        'message' => 'Not an initial stage for the workflow.'
+                'message' => 'Not an initial stage for the workflow.'
             ],
             [
                 ['stage_id'],

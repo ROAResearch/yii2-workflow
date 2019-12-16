@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class CreditWorkLog extends \tecnocen\workflow\models\WorkLog
+class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
 {
     public static function tableName()
     {

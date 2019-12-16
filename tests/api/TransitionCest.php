@@ -1,16 +1,15 @@
 <?php
 
-use Codeception\Example;
-use Codeception\Util\HttpCode;
-use app\fixtures\OauthAccessTokensFixture;
-use app\fixtures\TransitionFixture;
+use app\fixtures\{OauthAccessTokensFixture, TransitionFixture};
+use Codeception\{Example, Util\HttpCode};
+use roaresearch\yii2\roa\test\AbstractResourceCest;
 
 /**
  * Cest to transition resource.
  *
- * @author Carlos (neverabe) Llamosas <carlos@tecnocen.com>
+ * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class TransitionCest extends \tecnocen\roa\test\AbstractResourceCest
+class TransitionCest extends AbstractResourceCest
 {
     protected function authToken(ApiTester $I)
     {
@@ -335,7 +334,7 @@ class TransitionCest extends \tecnocen\roa\test\AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function recordJsonType()
+    protected function recordJsonType(): array
     {
         return [
             'source_stage_id' => 'integer:>0',
@@ -347,7 +346,7 @@ class TransitionCest extends \tecnocen\roa\test\AbstractResourceCest
     /**
      * @inheritdoc
      */
-    protected function getRoutePattern()
+    protected function getRoutePattern(): string
     {
         return 'w1/workflow/<workflow_id:\d+>/stage/<stage_id:\d+>/transition';
     }
