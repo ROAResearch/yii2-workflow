@@ -1,12 +1,15 @@
 Yii2 Workflow
 ==============
+
 Library to dynamically handle workflows in a database with ROA support.
 
 [![Latest Stable Version](https://poser.pugx.org/roaresearch/yii2-workflow/v/stable)](https://packagist.org/packages/roaresearch/yii2-workflow)
 [![Total Downloads](https://poser.pugx.org/roaresearch/yii2-workflow/downloads)](https://packagist.org/packages/roaresearch/yii2-workflow)
+[![Code Coverage](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/?branch=master)
 
-
-Travis [![Build Status Travis](https://travis-ci.org/roaresearch-com/yii2-workflow.svg?branch=master&style=flat?style=for-the-badge)](https://travis-ci.org/roaresearch/yii2-workflow)
+Scrutinizer [![Build Status Scrutinizer](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/badges/build.png?b=master&style=flat)](https://scrutinizer-ci.com/g/roaresearch/yii2-workflow/build-status/master)
+Travis [![Build Status Travis](https://travis-ci.org/roaresearch/yii2-workflow.svg?branch=master&style=flat?style=for-the-badge)](https://travis-ci.org/roaresearch/yii2-workflow)
 
 ## Getting Started
 
@@ -121,7 +124,7 @@ class m170101_010102_credit_worklog extends \roaresearch\yii2\workflow\migration
 After running the migrations its necessary to create Active Record models.
 
 ```php
-class Credit extends \tecnocen\workflow\models\Process
+class Credit extends \roaresearch\yii2\workflow\models\Process
 {
     protected function workflowClass(): string
     {
@@ -143,7 +146,7 @@ class Credit extends \tecnocen\workflow\models\Process
 ```
 
 ```php
-class CreditWorkLog extends \tecnocen\workflow\models\WorkLog
+class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
 {
     public static function processClass(): string
     {
@@ -224,21 +227,17 @@ Please read [CONTRIBUTING.md](https://github.com/roaresearch/yii2-workflow/blob/
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/roaresearch/yii2-workflow/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ROAResearch/yii2-roa/tags).
 
-_Considering [SemVer](http://semver.org/) for versioning rules 9, 10 and 11 talk about pre-releases, they will not be used within the Tecnocen-com._
+_Considering [SemVer](http://semver.org/) for versioning rules 9, 10 and 11 talk about pre-releases, they will not be used within the ROAResearch._
 
 ## Authors
 
-* [**Angel Guevara**](https://github.com/Faryshta) - *Initial work* - [Tecnocen.com](https://github.com/Tecnocen-com)
-* [**Carlos Llamosas**](https://github.com/neverabe) - *Initial work* - [Tecnocen.com](https://github.com/Tecnocen-com)
+* [**Angel Guevara**](https://github.com/Faryshta) - Initial work
+* [**Carlos Llamosas**](https://github.com/neverabe) - Initial work
 
-See also the list of [contributors](https://github.com/roaresearch/yii2-workflow/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/ROAResearch/yii2-roa/graphs/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-* TO DO - etc
-
-[![yii2-workflow](https://img.shields.io/badge/Powered__by-Tecnocen.com-orange.svg?style=for-the-badge)](https://www.tecnocen.com/)
