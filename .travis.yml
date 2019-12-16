@@ -28,7 +28,7 @@ before_script:
   - mysql --version
             
   # initialize database
-  - mysql -e "create database yii2_roa_test"
+  - mysql -e "create database yii2_workflow_test"
 
 script:
   - composer deploy-tests
