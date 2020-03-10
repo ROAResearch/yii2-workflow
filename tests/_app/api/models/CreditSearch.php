@@ -53,10 +53,10 @@ class CreditSearch extends Credit implements ResourceSearch
         $class = get_parent_class();
         return new ActiveDataProvider([
             'query' => $class::find()
-                ->joinWith('activeWorklog')
+                ->joinWith('activeWorkLog')
                 ->andFilterWhere([
                     'created_by' => $this->created_by,
-                    'activeWorklog.stage_id' => $this->activeStage,
+                    'activeWorkLog.stage_id' => $this->activeStage,
                 ])
         ]);
     }
