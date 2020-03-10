@@ -208,9 +208,9 @@ abstract class Process extends Entity
         $workLogClass = $this->workLogClass();
 
         return $query->andWhere([
-            'id' => $workLogClass::find()
-                ->select(['MAX(id)'])
+            'Worklog.id' => $workLogClass::find()
                 ->alias('WorkLog_groupwise')
+                ->select(['MAX(Worklog_groupwise.id)'])
                 ->andWhere('WorkLog.process_id = WorkLog_groupwise.process_id')
         ]);
     }

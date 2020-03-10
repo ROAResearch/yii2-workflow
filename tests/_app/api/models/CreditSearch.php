@@ -3,10 +3,19 @@
 namespace app\api\models;
 
 use roaresearch\yii2\roa\ResourceSearch;
+use roaresearch\yii2\workflow\models\Stage;
 use yii\data\ActiveDataProvider;
 
 class CreditSearch extends Credit implements ResourceSearch
 {
+    /**
+     * @inhertidoc
+     */
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['activeStage']);
+    }
+
     /**
      * @inhertidoc
      */
@@ -18,7 +27,14 @@ class CreditSearch extends Credit implements ResourceSearch
     public function rules()
     {
         return [
-            [['created_by'], 'integer'],
+            [['created_by', 'activeStage'], 'integer'],
+            [
+                ['activeStage'],
+                'exist',
+                'targetAttribute' => ['stageActiveStage' => 'id'],
+                'targetClass' => Stage::class,
+                'message' => 'Stage not registered.'
+            ],
         ];
     }
 
@@ -36,9 +52,12 @@ class CreditSearch extends Credit implements ResourceSearch
 
         $class = get_parent_class();
         return new ActiveDataProvider([
-            'query' => $class::find()->andFilterWhere([
-                'created_by' => $this->created_by,
-            ])
+            'query' => $class::find()
+                ->joinWith('activeWorklog')
+                ->andFilterWhere([
+                    'created_by' => $this->created_by,
+                    'activeWorklog.stage_id' => $this->activeStage,
+                ])
         ]);
     }
 }
