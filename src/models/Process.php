@@ -210,7 +210,7 @@ abstract class Process extends Entity
         return $query->andWhere([
             'activeWorkLog.id' => $workLogClass::find()
                 ->alias('WorkLogGroupWise')
-                ->select(['MAX(WorkLoGroupWise.id)'])
+                ->select(['MAX(WorkLogGroupWise.id)'])
                 ->andWhere('activeWorkLog.process_id = WorkLogGroupWise.process_id')
         ]);
     }
