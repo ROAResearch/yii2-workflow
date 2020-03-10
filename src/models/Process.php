@@ -203,15 +203,15 @@ abstract class Process extends Entity
      */
     public function getActiveWorkLog(): ActiveQuery
     {
-        $query = $this->getWorkLogs()->alias('WorkLog');
+        $query = $this->getWorkLogs()->alias('activeWorkLog');
         $query->multiple = false;
         $workLogClass = $this->workLogClass();
 
         return $query->andWhere([
-            'Worklog.id' => $workLogClass::find()
-                ->alias('WorkLog_groupwise')
-                ->select(['MAX(Worklog_groupwise.id)'])
-                ->andWhere('WorkLog.process_id = WorkLog_groupwise.process_id')
+            'activeWorkLog.id' => $workLogClass::find()
+                ->alias('WorkLogGroupWise')
+                ->select(['MAX(WorkLoGroupWise.id)'])
+                ->andWhere('activeWorkLog.process_id = WorkLogGroupWise.process_id')
         ]);
     }
 
