@@ -55,7 +55,7 @@ class CreditSearch extends Credit implements ResourceSearch
             'query' => $class::find()
                 ->joinWith('activeWorkLog')
                 ->andFilterWhere([
-                    'created_by' => $this->created_by,
+                    'credit.created_by' => $this->created_by,
                     'activeWorkLog.stage_id' => $this->activeStage,
                 ])
         ]);
