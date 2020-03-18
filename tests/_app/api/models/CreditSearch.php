@@ -27,13 +27,15 @@ class CreditSearch extends Credit implements ResourceSearch
     public function rules()
     {
         return [
-            [['created_by', 'activeStage'], 'integer'],
+            [['created_by'], 'integer'],
             [
                 ['activeStage'],
-                'exist',
-                'targetAttribute' => ['stageActiveStage' => 'id'],
-                'targetClass' => Stage::class,
-                'message' => 'Stage not registered.'
+                'each',
+                'allowMessageFromRule' => true,
+                'rule' => [
+                    'integer',
+                    'message' => '{value} is not an integer',
+                ],
             ],
         ];
     }
