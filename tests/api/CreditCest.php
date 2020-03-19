@@ -61,7 +61,7 @@ class CreditCest extends AbstractResourceCest
                 ],
             ],
             'search integer' => [
-                'url' => '/v1/credit?activeStage=1',
+                'url' => '/v1/credit?activeStage[]=1',
                 'httpCode' => HttpCode::OK,
                 'headers' => [
                     'X-Pagination-Total-Count' => 5,
