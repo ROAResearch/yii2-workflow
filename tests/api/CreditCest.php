@@ -169,7 +169,7 @@ class CreditCest extends AbstractResourceCest
                 ],
                 'httpCode' => HttpCode::UNPROCESSABLE_ENTITY,
                 'validationErrors' => [
-                    'stage_id' => 'Stage {4} does not belong to the workflow.'
+                    'stage_id' => 'Stage "4" does not belong to the workflow.'
                 ],
             ],
             'dont exists' => [
