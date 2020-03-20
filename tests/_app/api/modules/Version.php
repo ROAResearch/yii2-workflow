@@ -4,7 +4,7 @@ namespace app\api\modules;
 
 use app\api\resources\{
     CreditResource,
-    CreditWorklogResource,
+    CreditWorkLogResource,
     CreditAssignmentResource
 };
 
@@ -21,7 +21,7 @@ class Version extends \roaresearch\yii2\roa\modules\ApiVersion
      */
     public $resources = [
         self::CREDIT_ROUTE => ['class' => CreditResource::class],
-        self::WORKLOG_ROUTE => ['class' => CreditWorklogResource::class],
+        self::WORKLOG_ROUTE => ['class' => CreditWorkLogResource::class],
         self::ASSIGNMENT_ROUTE => ['class' => CreditAssignmentResource::class],
     ];
 }

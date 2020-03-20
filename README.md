@@ -128,7 +128,7 @@ class Credit extends \roaresearch\yii2\workflow\models\Process
 {
     protected function workflowClass(): string
     {
-        return CreditWorklog::class;
+        return CreditWorkLog::class;
     }
 
     public function getWorkflowId(): int
@@ -167,7 +167,7 @@ public $resources = [
    'credit',
    'credit/<credit_id:\d+>/worklog' => [
        'class' => WorklogResource::class,
-       'modelClass' => CreditWorklog::class,
+       'modelClass' => CreditWorkLog::class,
    ]
 ];
 ```

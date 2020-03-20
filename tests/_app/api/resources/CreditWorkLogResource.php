@@ -2,24 +2,24 @@
 
 namespace app\api\resources;
 
-use app\api\models\CreditWorklog;
+use app\api\models\CreditWorkLog;
 use roaresearch\yii2\roa\controllers\Resource;
 
 /**
  * CRUD resource for `Credit Worklog` records
  * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class CreditWorklogResource extends Resource
+class CreditWorkLogResource extends Resource
 {
     /**
      * @inheritdoc
      */
-    public $createScenario = CreditWorklog::SCENARIO_FLOW;
+    public $createScenario = CreditWorkLog::SCENARIO_FLOW;
 
     /**
      * @inheritdoc
      */
-    public $modelClass = CreditWorklog::class;
+    public $modelClass = CreditWorkLog::class;
 
     /**
      * @inheritdoc

@@ -8,7 +8,7 @@ use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
 /**
  * ROA contract to handle credit_worklog records.
  */
-class CreditWorklog extends base\CreditWorklog implements Contract
+class CreditWorkLog extends base\CreditWorkLog implements Contract
 {
     use ContractTrait;
 

@@ -1,6 +1,10 @@
 <?php
 
-use app\fixtures\{CreditFixture, OauthAccessTokensFixture};
+use app\fixtures\{
+    CreditFixture,
+    CreditWorkLogFixture,
+    OauthAccessTokensFixture
+};
 use Codeception\{Example, Util\HttpCode};
 use roaresearch\yii2\roa\test\AbstractResourceCest;
 
@@ -26,6 +30,7 @@ class CreditCest extends AbstractResourceCest
                 'class' => CreditFixture::class,
                 'depends' => []
             ],
+            'credit_worklog' => CreditWorkLogFixture::class,
         ]);
     }
 
@@ -53,6 +58,20 @@ class CreditCest extends AbstractResourceCest
                 'httpCode' => HttpCode::OK,
                 'headers' => [
                     'X-Pagination-Total-Count' => 7,
+                ],
+            ],
+            'search integer' => [
+                'url' => '/v1/credit?activeStage[]=1',
+                'httpCode' => HttpCode::OK,
+                'headers' => [
+                    'X-Pagination-Total-Count' => 5,
+                ],
+            ],
+            'search array' => [
+                'url' => '/v1/credit?activeStage[]=1&activeStage[]=4',
+                'httpCode' => HttpCode::OK,
+                'headers' => [
+                    'X-Pagination-Total-Count' => 6,
                 ],
             ],
             'not found credit' => [
@@ -114,7 +133,7 @@ class CreditCest extends AbstractResourceCest
      * @param  ApiTester $I
      * @param  Example $example
      * @dataprovider createDataProvider
-     * @depends CreditWorklogCest:fixtures
+     * @depends CreditWorkLogCest:fixtures
      * @before authToken
      */
     public function create(ApiTester $I, Example $example)
@@ -142,6 +161,16 @@ class CreditCest extends AbstractResourceCest
                     'stage_id' => 4,
                 ],
                 'httpCode' => HttpCode::CREATED,
+            ],
+            'stage doesn´t belong workflow' => [
+                'data' => [
+                    'workflow_id' => 1,
+                    'stage_id' => 4,
+                ],
+                'httpCode' => HttpCode::UNPROCESSABLE_ENTITY,
+                'validationErrors' => [
+                    'stage_id' => 'Stage "4" does not belong to the workflow.'
+                ],
             ],
             'dont exists' => [
                 'data' => [
@@ -215,7 +244,7 @@ class CreditCest extends AbstractResourceCest
      * @param  ApiTester $I
      * @param  Example $example
      * @dataprovider deleteDataProvider
-     * @depends CreditWorklogCest:create
+     * @depends CreditWorkLogCest:create
      * @before authToken
      */
     public function delete(ApiTester $I, Example $example)

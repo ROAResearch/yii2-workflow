@@ -27,7 +27,7 @@ class Credit extends base\Credit implements Contract
      */
     protected function workLogClass(): string
     {
-        return CreditWorklog::class;
+        return CreditWorkLog::class;
     }
 
     /**

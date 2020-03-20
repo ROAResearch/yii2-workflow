@@ -28,7 +28,7 @@ class Credit extends \roaresearch\yii2\workflow\models\Process
 
     protected function workLogClass(): string
     {
-        return CreditWorklog::class;
+        return CreditWorkLog::class;
     }
 
     public function getWorkflowId(): int
