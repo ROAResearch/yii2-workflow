@@ -40,7 +40,7 @@ class CreditWorkLogCest
         $creditWorklog = new CreditWorkLog();
         $creditWorklog->process_id = 4; // current stage_id = 7
         $creditWorklog->stage_id = 4;
-        $I->expectException(
+        $I->expectThrowable(
             ForbiddenHttpException::class,
             function () use ($creditWorklog) {
                 $creditWorklog->save();
