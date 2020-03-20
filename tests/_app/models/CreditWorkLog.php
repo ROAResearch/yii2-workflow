@@ -40,7 +40,7 @@ class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
                             'workflow_id' => $this->process->workflow_id,
                         ]);
                     }
-                }
+                },
                 'message' => 'Stage "{value}" does not belong to the workflow.",
             ],
         ]);
