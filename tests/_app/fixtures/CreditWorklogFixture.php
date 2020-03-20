@@ -2,7 +2,7 @@
 
 namespace app\fixtures;
 
-use app\models\CreditWorklog;
+use app\models\CreditWorkLog;
 use yii\test\ActiveFixture;
 
 /**
@@ -10,12 +10,12 @@ use yii\test\ActiveFixture;
  *
  * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class CreditWorklogFixture extends ActiveFixture
+class CreditWorkLogFixture extends ActiveFixture
 {
     /**
      * @inheritdoc
      */
-    public $modelClass = CreditWorklog::class;
+    public $modelClass = CreditWorkLog::class;
 
     /**
      * @inheritdoc

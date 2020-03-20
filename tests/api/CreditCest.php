@@ -2,7 +2,7 @@
 
 use app\fixtures\{
     CreditFixture,
-    CreditWorklogFixture,
+    CreditWorkLogFixture,
     OauthAccessTokensFixture
 };
 use Codeception\{Example, Util\HttpCode};
@@ -30,7 +30,7 @@ class CreditCest extends AbstractResourceCest
                 'class' => CreditFixture::class,
                 'depends' => []
             ],
-            'credit_worklog' => CreditWorklogFixture::class,
+            'credit_worklog' => CreditWorkLogFixture::class,
         ]);
     }
 
@@ -133,7 +133,7 @@ class CreditCest extends AbstractResourceCest
      * @param  ApiTester $I
      * @param  Example $example
      * @dataprovider createDataProvider
-     * @depends CreditWorklogCest:fixtures
+     * @depends CreditWorkLogCest:fixtures
      * @before authToken
      */
     public function create(ApiTester $I, Example $example)
@@ -244,7 +244,7 @@ class CreditCest extends AbstractResourceCest
      * @param  ApiTester $I
      * @param  Example $example
      * @dataprovider deleteDataProvider
-     * @depends CreditWorklogCest:create
+     * @depends CreditWorkLogCest:create
      * @before authToken
      */
     public function delete(ApiTester $I, Example $example)

@@ -4,8 +4,8 @@ namespace models;
 
 use UnitTester;
 use app\{
-    fixtures\CreditWorklogFixture,
-    models\CreditWorklog,
+    fixtures\CreditWorkLogFixture,
+    models\CreditWorkLog,
     models\User
 };
 use Yii;
@@ -16,14 +16,14 @@ use yii\web\ForbiddenHttpException;
  *
  * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class CreditWorklogCest
+class CreditWorkLogCest
 {
     /**
      * @depends models\CreditCest:save
      */
     public function validate(UnitTester $I)
     {
-        $creditWorklog = new CreditWorklog();
+        $creditWorklog = new CreditWorkLog();
 
         $creditWorklog->process_id = 4;
         $I->assertTrue($creditWorklog->validate(['process_id']));
@@ -37,7 +37,7 @@ class CreditWorklogCest
      */
     public function save(UnitTester $I)
     {
-        $creditWorklog = new CreditWorklog();
+        $creditWorklog = new CreditWorkLog();
         $creditWorklog->process_id = 4; // current stage_id = 7
         $creditWorklog->stage_id = 4;
         $I->expectException(

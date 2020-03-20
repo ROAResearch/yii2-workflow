@@ -1,6 +1,6 @@
 <?php
 
-use app\fixtures\{CreditWorklogFixture, OauthAccessTokensFixture};
+use app\fixtures\{CreditWorkLogFixture, OauthAccessTokensFixture};
 use Codeception\{Example, Util\HttpCode};
 use roaresearch\yii2\roa\test\AbstractResourceCest;
 
@@ -9,7 +9,7 @@ use roaresearch\yii2\roa\test\AbstractResourceCest;
  *
  * @author Carlos (neverabe) Llamosas <carlos@invernaderolabs.com>
  */
-class CreditWorklogCest extends AbstractResourceCest
+class CreditWorkLogCest extends AbstractResourceCest
 {
     protected function authToken(ApiTester $I)
     {
@@ -23,7 +23,7 @@ class CreditWorklogCest extends AbstractResourceCest
     {
         $I->haveFixtures([
             'credit_worklog' => [
-                'class' => CreditWorklogFixture::class,
+                'class' => CreditWorkLogFixture::class,
                 'depends' => [],
             ]
         ]);

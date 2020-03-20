@@ -2,7 +2,7 @@
 
 namespace models;
 
-use app\{fixtures\CreditWorklogFixture, models\Credit};
+use app\{fixtures\CreditWorkLogFixture, models\Credit};
 use Codeception\Example;
 use UnitTester;
 
@@ -12,7 +12,7 @@ class CreditCest
     {
         $I->haveFixtures([
             'credit_worklog' => [
-                'class' => CreditWorklogFixture::class,
+                'class' => CreditWorkLogFixture::class,
             ],
         ]);
     }
