@@ -32,7 +32,7 @@ class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
                 'exist',
                 'skipOnError' => true,
                 'targetClass' => Stage::class,
-                'targetAttribute' => ['workflow_id' => 'id'],
+                'targetAttribute' => ['stage_id' => 'id'],
                 'on' => [self::SCENARIO_INITIAL],
                 'filter' => function ($q) {
                     if (!$this->process->hasErrors()) {
