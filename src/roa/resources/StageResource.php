@@ -38,4 +38,3 @@ class StageResource extends Resource
         return $actions;
     }
 }
-}
