@@ -4,6 +4,7 @@ namespace roaresearch\yii2\workflow\roa\resources;
 
 use roaresearch\yii2\roa\{actions\SoftDelete, controllers\Resource};
 use roaresearch\yii2\workflow\roa\models\{Workflow, WorkflowSearch};
+use yii\db\ActiveQuery;
 
 /**
  * Resource to handle `Workflow` records
@@ -31,5 +32,14 @@ class WorkflowResource extends Resource
         $actions['delete']['class'] = SoftDelete::class;
 
         return $actions;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function baseQuery(): ActiveQuery
+    {
+        return parent::baseQuery()
+            ->andWhere(['deleted_at' => null, 'deleted_by' => null]);
     }
 }

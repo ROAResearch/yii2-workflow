@@ -4,6 +4,7 @@ namespace roaresearch\yii2\workflow\roa\resources;
 
 use roaresearch\yii2\roa\{actions\SoftDelete, controllers\Resource};
 use roaresearch\yii2\workflow\roa\models\{Stage, StageSearch};
+use yii\db\ActiveQuery;
 
 /**
  * Resource to handle `Stage` records.
@@ -36,5 +37,14 @@ class StageResource extends Resource
         $actions['delete']['class'] = SoftDelete::class;
 
         return $actions;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function baseQuery(): ActiveQuery
+    {
+        return parent::baseQuery()
+            ->andWhere(['deleted_at' => null, 'deleted_by' => null]);
     }
 }

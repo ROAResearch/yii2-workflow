@@ -37,7 +37,9 @@ class WorkflowSearch extends Workflow implements ResourceSearch
 
         $class = get_parent_class();
         return new ActiveDataProvider([
-            'query' => $class::find()->andFilterWhere([
+            'query' => $class::find()
+                ->andWhere(['deleted_by' => null, 'deleted_at' => null])
+                ->andFilterWhere([
                     'created_by' => $this->created_by,
                 ])
                 ->andFilterWhere(['like', 'name', $this->name]),

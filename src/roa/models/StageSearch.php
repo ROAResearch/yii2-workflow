@@ -41,7 +41,9 @@ class StageSearch extends Stage implements \roaresearch\yii2\roa\ResourceSearch
 
         $class = get_parent_class();
         return new ActiveDataProvider([
-            'query' => $class::find()->andFilterWhere([
+            'query' => $class::find()
+                ->andWhere(['deleted_by' => null, 'deleted_at' => null])
+                ->andFilterWhere([
                     'created_by' => $this->created_by,
                     'workflow_id' => $this->workflow_id,
                 ])
