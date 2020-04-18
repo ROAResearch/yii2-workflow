@@ -65,6 +65,7 @@ class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
     public function getStages(): ActiveQuery
     {
         return $this->hasMany($this->stageClass, ['workflow_id' => 'id'])
+            ->andWhere(['deleted_by' => null, 'deleted_at' => null])
             ->inverseOf('workflow');
     }
 
