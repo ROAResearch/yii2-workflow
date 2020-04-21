@@ -29,7 +29,7 @@
     "require": {
         "php": "^7.1",
         "roaresearch/yii2-roa": "~2.0.0",
-        "roaresearch/yii2-rmdb": "dev-softDeleteActiveQueryTrait as 2.0.x",
+        "roaresearch/yii2-rmdb": "dev-softDeleteActiveQueryTrait as 2.0.x-dev",
         "yii2tech/ar-softdelete": "*"
     },
     "require-dev": {
