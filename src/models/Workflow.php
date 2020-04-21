@@ -61,7 +61,7 @@ class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
     }
 
     /**
-     * @return ActiveQuery
+     * @return SoftDeleteActiveQuery
      */
     public function getStages(): SoftDeleteActiveQuery
     {

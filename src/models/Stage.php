@@ -93,7 +93,7 @@ class Stage extends \roaresearch\yii2\rmdb\models\PersistentEntity
     }
 
     /**
-     * @return ActiveQuery
+     * @return SoftDeleteActiveQuery
      */
     public function getWorkflow(): SoftDeleteActiveQuery
     {
