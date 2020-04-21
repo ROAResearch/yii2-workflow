@@ -96,9 +96,9 @@ class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
     /**
      * @inheritdoc
      */
-    protected function softDeleteConf(): array
+    protected function softDeleteBehaviorConfig(): array
     {
-        return parent::softDeleteConf() + [
+        return parent::softDeleteBehaviorConfig() + [
             'allowDeleteCallback' => function ($record) {
                 return !$record->getStages()->exists();
             },
