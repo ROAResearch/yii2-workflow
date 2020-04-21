@@ -2,7 +2,7 @@
 
 namespace roaresearch\yii2\workflow\models;
 
-use roaresearch\yii2\rmdb\SoftDeleteActiveQuery
+use roaresearch\yii2\rmdb\SoftDeleteActiveQuery;
 use yii\db\ActiveQuery;
 
 /**
