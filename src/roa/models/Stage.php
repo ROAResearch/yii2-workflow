@@ -2,6 +2,7 @@
 
 namespace roaresearch\yii2\workflow\roa\models;
 
+use roaresearch\yii2\rmdb\SoftDeleteActiveQuery;
 use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
 use roaresearch\yii2\workflow\models as base;
 
@@ -56,5 +57,13 @@ class Stage extends base\Stage implements Contract
             'detailTransitions',
             'totalTransitions',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getWorkflow(): SoftDeleteActiveQuery
+    {
+        return parent::getWorkflow()->notDeleted();
     }
 }
