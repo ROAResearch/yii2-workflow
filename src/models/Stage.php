@@ -117,6 +117,17 @@ class Stage extends \roaresearch\yii2\rmdb\models\PersistentEntity
     /**
      * @return ActiveQuery
      */
+    public function getTargetTransitions(): ActiveQuery
+    {
+        return $this->hasMany(
+            $this->transitionClass,
+            ['target_stage_id' => 'id']
+        )->inverseOf('targetStage');
+    }
+
+    /**
+     * @return ActiveQuery
+     */
     public function getDetailTransitions(): ActiveQuery
     {
         $query = $this->getTransitions();
@@ -154,7 +165,8 @@ class Stage extends \roaresearch\yii2\rmdb\models\PersistentEntity
     {
         return parent::softDeleteBehaviorConfig() + [
             'allowDeleteCallback' => function ($record) {
-                return !$record->getTransitions()->exists();
+                return !$record->getTransitions()->exists()
+                    && !$this->getTargetTransitions()->exists();
             },
         ];
     }

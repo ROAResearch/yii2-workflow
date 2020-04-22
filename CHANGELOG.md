@@ -1,6 +1,11 @@
 Yii2 Workflow Change Log
 ========================
 
+2.0.1
+-----
+
+- Bug: Added suppport for softdelete
+
 2.0.0
 -----
 
