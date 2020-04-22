@@ -2,7 +2,7 @@
 
 namespace roaresearch\yii2\workflow\roa\resources;
 
-use roaresearch\yii2\roa\controllers\Resource;
+use roaresearch\yii2\roa\{actions\SoftDelete, controllers\Resource};
 use roaresearch\yii2\workflow\roa\models\{Workflow, WorkflowSearch};
 
 /**
@@ -21,4 +21,23 @@ class WorkflowResource extends Resource
      * @inheritdoc
      */
     public $searchClass = WorkflowSearch::class;
+
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        $actions = parent::actions();
+        $actions['delete']['class'] = SoftDelete::class;
+
+        return $actions;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function baseQuery(): \yii\db\ActiveQuery
+    {
+        return parent::baseQuery()->notDeleted();
+    }
 }

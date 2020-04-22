@@ -2,6 +2,7 @@
 
 namespace roaresearch\yii2\workflow\models;
 
+use roaresearch\yii2\rmdb\SoftDeleteActiveQuery;
 use yii\db\ActiveQuery;
 
 /**
@@ -60,9 +61,9 @@ class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
     }
 
     /**
-     * @return ActiveQuery
+     * @return SoftDeleteActiveQuery
      */
-    public function getStages(): ActiveQuery
+    public function getStages(): SoftDeleteActiveQuery
     {
         return $this->hasMany($this->stageClass, ['workflow_id' => 'id'])
             ->inverseOf('workflow');
@@ -90,5 +91,17 @@ class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
     public function getTotalStages(): int
     {
         return (int)$this->detailStages['totalStages'];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function softDeleteBehaviorConfig(): array
+    {
+        return parent::softDeleteBehaviorConfig() + [
+            'allowDeleteCallback' => function ($record) {
+                return !$record->getStages()->exists();
+            },
+        ];
     }
 }

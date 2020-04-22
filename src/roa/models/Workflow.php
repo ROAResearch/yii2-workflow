@@ -2,6 +2,7 @@
 
 namespace roaresearch\yii2\workflow\roa\models;
 
+use roaresearch\yii2\rmdb\SoftDeleteActiveQuery;
 use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
 use roaresearch\yii2\workflow\models as base;
 use yii\web\NotFoundHttpException;
@@ -56,5 +57,13 @@ class Workflow extends base\Workflow implements Contract
     public function extraFields()
     {
         return ['stages', 'detailStages', 'totalStages'];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getStages(): SoftDeleteActiveQuery
+    {
+        return parent::getStages()->notDeleted();
     }
 }

@@ -45,7 +45,8 @@ class StageSearch extends Stage implements \roaresearch\yii2\roa\ResourceSearch
                     'created_by' => $this->created_by,
                     'workflow_id' => $this->workflow_id,
                 ])
-                ->andFilterWhere(['like', 'name', $this->name]),
+                ->andFilterWhere(['like', 'name', $this->name])
+                ->notDeleted(),
         ]);
     }
 }

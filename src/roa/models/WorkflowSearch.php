@@ -40,7 +40,8 @@ class WorkflowSearch extends Workflow implements ResourceSearch
             'query' => $class::find()->andFilterWhere([
                     'created_by' => $this->created_by,
                 ])
-                ->andFilterWhere(['like', 'name', $this->name]),
+                ->andFilterWhere(['like', 'name', $this->name])
+                ->notDeleted(),
         ]);
     }
 }
