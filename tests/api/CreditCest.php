@@ -146,6 +146,13 @@ class CreditCest extends AbstractResourceCest
             )[0];
             $I->sendGET($worklogRoute);
             $I->seeHTTPHeader('X-PAGINATION-TOTAL-COUNT', 1);
+            ($example['grabRecord']) ?
+            $record = $I->grabRecord(
+                'app\models\CreditWorkLog',
+                [
+                    'comment' => $example['data']['comment']
+                ]
+            ) : '';
         }
     }
 
@@ -156,13 +163,16 @@ class CreditCest extends AbstractResourceCest
     {
         return [
             'create credit 1' => [
+                'grabRecord' => true,
                 'data' => [
                     'workflow_id' => 2,
                     'stage_id' => 4,
+                    'comment' => 'Proccess Initiated'
                 ],
                 'httpCode' => HttpCode::CREATED,
             ],
             'stage doesn´t belong workflow' => [
+                'grabRecord' => false,
                 'data' => [
                     'workflow_id' => 1,
                     'stage_id' => 4,
@@ -173,6 +183,7 @@ class CreditCest extends AbstractResourceCest
                 ],
             ],
             'dont exists' => [
+                'grabRecord' => false,
                 'data' => [
                     'workflow_id' => 123,
                     'stage_id' => 2,
@@ -184,6 +195,7 @@ class CreditCest extends AbstractResourceCest
                 ],
             ],
             'not blank' => [
+                'grabRecord' => false,
                 'httpCode' => HttpCode::UNPROCESSABLE_ENTITY,
                 'validationErrors' => [
                     'workflow_id' => 'Workflow ID cannot be blank.'
