@@ -11,15 +11,15 @@ class CreditSearch extends Credit implements ResourceSearch
     /**
      * @inhertidoc
      */
-    public function attributes()
-    {
-        return array_merge(parent::attributes(), ['activeStage']);
-    }
+    protected $autogenerateInitialWorklog = false;
 
     /**
      * @inhertidoc
      */
-    protected $autogenerateInitialWorklog = false;
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['activeStage']);
+    }
 
     /**
      * @inhertidoc

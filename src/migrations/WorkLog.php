@@ -34,7 +34,7 @@ abstract class WorkLog extends \roaresearch\yii2\rmdb\migrations\CreatePivot
             'id' => $this->primaryKey(),
             'process_id' => $this->normalKey(),
             'stage_id' => $this->normalKey(),
-            'commentary' => $this->text(),
+            'comment' => $this->text(),
         ];
     }
 
