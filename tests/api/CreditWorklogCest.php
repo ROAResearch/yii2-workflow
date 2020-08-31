@@ -98,6 +98,13 @@ class CreditWorkLogCest extends AbstractResourceCest
     {
         $I->wantTo('Create a Credit Worklog record.');
         $this->internalCreate($I, $example);
+        ($example['grabRecord']) ?
+        $record = $I->grabRecord(
+            'app\models\CreditWorkLog',
+            [
+                'comment' => $example['data']['comment']
+            ]
+        ) : '';
     }
 
     /**
@@ -107,15 +114,18 @@ class CreditWorkLogCest extends AbstractResourceCest
     {
         return [
             'create worklog' => [
+                'grabRecord' => true,
                 'urlParams' => [
                     'process_id' => 1
                 ],
                 'data' => [
-                    'stage_id' => 5
+                    'stage_id' => 5,
+                    'comment' => 'Stage changed'
                 ],
                 'httpCode' => HttpCode::CREATED,
             ],
             'unprocessable worklog' => [
+                'grabRecord' => false,
                 'urlParams' => [
                     'process_id' => 1
                 ],

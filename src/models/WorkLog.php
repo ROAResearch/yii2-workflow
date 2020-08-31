@@ -14,6 +14,7 @@ use yii\{
  * @property int $id
  * @property int $process_id
  * @property int $stage_id
+ * @property string $comment
  *
  * @property Process $process
  */
@@ -36,6 +37,7 @@ abstract class WorkLog extends Pivot
             [['process_id'], 'required', 'except' => [self::SCENARIO_INITIAL]],
             [['stage_id'], 'required'],
             [['process_id', 'stage_id'], 'integer'],
+            [['comment'], 'string', 'max' => 1024],
             [
                 ['process_id'],
                 'exist',
@@ -140,6 +142,7 @@ abstract class WorkLog extends Pivot
         }
         parent::init();
     }
+
     /**
      * @return ActiveQuery
      */
