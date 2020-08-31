@@ -155,6 +155,22 @@ class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
 }
 ```
 
+Notice that by default every new record of Process being validated will attempt
+to create an initial WorkLog. If you want to prevent this behavior for example
+on search models you need to set the `Process::$autogenerateInitialWorklog` to
+`false`
+
+```php
+class CrediSearch extends \roaresearch\yii2\workflow\models\WorkLog
+{
+    /**
+     * @inhertidoc
+     */
+    protected $autogenerateInitialWorklog = false;
+
+}
+```
+
 #### Worklog Resource
 ----------------
 
