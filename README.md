@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Install PHP 7.1 or higher
+- Install PHP 7.2 or higher
 - [Composer Installed](https://getcomposer.org/doc/00-intro.md)
 
 The rest of the requirements are checked by composer when installing the
@@ -155,6 +155,8 @@ class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
 }
 ```
 
+#### Initial Worklog
+
 Notice that by default every new record of Process being validated will attempt
 to create an initial WorkLog. If you want to prevent this behavior for example
 on search models you need to set the `Process::$autogenerateInitialWorklog` to
@@ -167,9 +169,21 @@ class CrediSearch extends \roaresearch\yii2\workflow\models\WorkLog
      * @inhertidoc
      */
     protected $autogenerateInitialWorklog = false;
-
 }
 ```
+
+If this option is set to `true` then on the same request which creates the
+process `Credit` can receive fields `comment` and `stage_id` which will be
+stored not in the process `Credit` but in the worklog record.
+
+#### Relations `Process::$worklogs` and `Process::$activeWorkLog`
+
+Process models contain 2 relations to handle its work log. `$workLogs` provide
+the list of all the related work logs and `$activeWorkLog` find only the most
+recent worklog using the groupwise search strategy.
+
+Notice that the groupwise strategy implies a join query with aliased tables, as
+such extra consideration is needed when joining with other queries.
 
 #### Worklog Resource
 ----------------
