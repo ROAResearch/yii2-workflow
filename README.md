@@ -202,6 +202,8 @@ public $resources = [
 ];
 ```
 
+[Detailed documentation for worklog and its use cases](Worklog.md]
+
 ## Running the tests
 
 This library contains tools to set up a testing environment using composer scripts, for more information see [Testing Environment](https://github.com/roaresearch/yii2-workflow/blob/master/CONTRIBUTING.md) section.
