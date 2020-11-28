@@ -57,21 +57,21 @@ class CreditCest extends AbstractResourceCest
                 'url' => '/v1/credit',
                 'httpCode' => HttpCode::OK,
                 'headers' => [
-                    'X-Pagination-Total-Count' => 7,
+                    'X-Pagination-Total-Count' => 1,
                 ],
             ],
             'search integer' => [
                 'url' => '/v1/credit?activeStage[]=1',
                 'httpCode' => HttpCode::OK,
                 'headers' => [
-                    'X-Pagination-Total-Count' => 5,
+                    'X-Pagination-Total-Count' => 1,
                 ],
             ],
             'search array' => [
                 'url' => '/v1/credit?activeStage[]=1&activeStage[]=4',
                 'httpCode' => HttpCode::OK,
                 'headers' => [
-                    'X-Pagination-Total-Count' => 6,
+                    'X-Pagination-Total-Count' => 1,
                 ],
             ],
             'not found credit' => [
@@ -117,10 +117,16 @@ class CreditCest extends AbstractResourceCest
         return [
             'single record' => [
                 'urlParams' => [
-                    'id' => 4,
+                    'id' => 2,
                     'expand' => 'workLogs, activeWorkLog',
                 ],
                 'httpCode' => HttpCode::OK,
+            ],
+            'forbidden' => [
+                'urlParams' => [
+                    'id' => 1,
+                ],
+                'httpCode' => HttpCode::FORBIDDEN,
             ],
             'not found credit record' => [
                 'url' => '/v1/credit/8',
