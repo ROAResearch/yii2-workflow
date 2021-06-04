@@ -8,7 +8,8 @@ class CreditWorkLog extends \roaresearch\yii2\workflow\models\WorkLog
 {
     /**
      * @inheritdoc
-     */   public static function tableName()
+     */
+    public static function tableName()
     {
         return '{{%credit_worklog}}';
     }

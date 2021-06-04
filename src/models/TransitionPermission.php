@@ -24,13 +24,13 @@ class TransitionPermission extends \roaresearch\yii2\rmdb\models\Entity
      * @var string full class name of the model to be used for the relations
      * `getSourceStage()` and `getTargetStage()`.
      */
-    protected $stageClass = Stage::class;
+    protected string $stageClass = Stage::class;
 
     /**
      * @var string full class name of the model to be used for the relation
      * `getTransition()`.
      */
-    protected $transitionClass = Transition::class;
+    protected string $transitionClass = Transition::class;
 
     /**
      * @inheritdoc

@@ -2,7 +2,7 @@
 
 namespace roaresearch\yii2\workflow\roa\models;
 
-use roaresearch\yii2\roa\ResourceSearch;
+use roaresearch\yii2\roa\hal\ARContractSearch;
 use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
 
 /**
@@ -11,7 +11,7 @@ use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
  * @author Angel (Faryshta) Guevara <aguevara@alquimiadigital.mx>
  */
 class TransitionPermissionSearch extends TransitionPermission implements
-    ResourceSearch
+    ARContractSearch
 {
     /**
      * @inhertidoc
@@ -42,9 +42,8 @@ class TransitionPermissionSearch extends TransitionPermission implements
             throw new NotFoundHttpException('Unexistant permission path.');
         }
 
-        $class = get_parent_class();
         return new ActiveDataProvider([
-            'query' => $class::find()->andFilterWhere([
+            'query' => (get_parent_class())::find()->andFilterWhere([
                     'target_stage_id' => $this->target_stage_id,
                     'source_stage_id' => $this->source_stage_id,
                 ])

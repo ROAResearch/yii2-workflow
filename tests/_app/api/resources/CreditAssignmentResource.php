@@ -18,9 +18,9 @@ class CreditAssignmentResource extends Resource
     /**
      * @inheritdoc
      */
-    public $filterParams = ['process_id'];
+    public array $filterParams = ['process_id'];
     /**
      * @inheritdoc
      */
-    public $idAttribute = 'user_id';
+    public string $idAttribute = 'user_id';
 }

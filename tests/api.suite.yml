@@ -6,3 +6,4 @@ modules:
             depends: Yii2
         - Yii2:
             cleanup: false
+            transaction: false

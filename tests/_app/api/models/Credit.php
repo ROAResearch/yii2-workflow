@@ -3,12 +3,12 @@
 namespace app\api\models;
 
 use app\models as base;
-use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
+use roaresearch\yii2\roa\hal\{ARContract, ContractTrait};
 
 /**
  * ROA contract to handle credit records.
  */
-class Credit extends base\Credit implements Contract
+class Credit extends base\Credit implements ARContract
 {
     use ContractTrait {
         getLinks as getContractLinks;

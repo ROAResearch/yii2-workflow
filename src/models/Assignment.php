@@ -58,12 +58,12 @@ abstract class Assignment extends Pivot
      */
     public function init()
     {
-        if (!is_subclass_of($this->processClass(), Process::class)) {
+        is_subclass_of($this->processClass(), Process::class) ||
             throw new InvalidConfigException(
                 static::class . '::processClass() must extend '
                     . Process::class
             );
-        }
+
         parent::init();
     }
 

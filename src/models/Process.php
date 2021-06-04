@@ -19,14 +19,14 @@ abstract class Process extends Entity
      * @var WorkLog model used internally to create the initial WorkLog
      * @see hasInitialWorkLog()
      */
-    private $initialWorkLog;
+    private WorkLog $initialWorkLog;
 
     /**
      * @var bool Whether or not autogenerate the initial worklog. It only works
      * on new records.
      * @see hasInitialWorkLog()
      */
-    protected $autogenerateInitialWorklog = true;
+    protected bool $autogenerateInitialWorklog = true;
 
     /**
      * @return string full class name of the class to be used for the relation
@@ -66,11 +66,10 @@ abstract class Process extends Entity
         if (!$this->autogenerateInitialWorklog || !$this->isNewRecord) {
             return false;
         }
-        if (null === $this->initialWorkLog) {
-            $this->initialWorkLog = $this->ensureWorkLog([
-                'scenario' => WorkLog::SCENARIO_INITIAL,
-            ]);
-        }
+
+        $this->initialWorkLog ??= $this->ensureWorkLog([
+            'scenario' => WorkLog::SCENARIO_INITIAL,
+        ]);
 
         return true;
     }
@@ -154,7 +153,7 @@ abstract class Process extends Entity
     {
         if (!is_subclass_of($this->workLogClass(), WorkLog::class)) {
             throw new InvalidConfigException(
-                static::class . '::workLogClass() must extend '
+                $this::class . '::workLogClass() must extend '
                     . WorkLog::class
             );
         }
@@ -172,9 +171,7 @@ abstract class Process extends Entity
      */
     public function getWorkflow(): Workflow
     {
-        $workflowClass = $this->workflowClass();
-
-        return $workflowClass::findOne($this->getWorkflowId());
+        return ($this->workflowClass())::findOne($this->getWorkflowId());
     }
 
     /**

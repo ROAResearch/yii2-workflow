@@ -10,7 +10,7 @@ abstract class Assignment extends \roaresearch\yii2\rmdb\migrations\CreatePivot
     /**
      * @var string suffix attached at the end of the process table.
      */
-    public $assignmentSuffix = '_assignment';
+    public string $assignmentSuffix = '_assignment';
 
     /**
      * @return string name of the table to which the assignment will be attached.

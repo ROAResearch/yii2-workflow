@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Install PHP 7.2 or higher
+- Install PHP 8.0 or higher
 - [Composer Installed](https://getcomposer.org/doc/00-intro.md)
 
 The rest of the requirements are checked by composer when installing the
@@ -41,9 +41,13 @@ require: {
 
 ### Deployment
 
-Then run the required migrations
+To prepare the database you need to create a database for the testing by default
+the name is `yii2_workflow_test` and the connection can be configured by
+creating or editing the file `tests/_app/config/db.local.php`.
 
-`php yii migrate/up -p=@roaresearch/workflow/migrations`
+Then run the deplo script
+
+`composer deploy-tests`
 
 Which will install the following table structure
 
@@ -59,7 +63,7 @@ to the api container which will be used to hold the resources.
 ```php
 class Api extends \roaresearch\yii2\roa\modules\ApiContainer
 {
-    public $versions = [
+    public array $versions = [
        // other versions
        'w1' => ['class' => 'roaresearch\yii2\workflow\roa\modules\Version'],
    ];
@@ -168,7 +172,7 @@ class CrediSearch extends \roaresearch\yii2\workflow\models\WorkLog
     /**
      * @inhertidoc
      */
-    protected $autogenerateInitialWorklog = false;
+    protected bool $autogenerateInitialWorklog = false;
 }
 ```
 
@@ -193,7 +197,7 @@ Each process gets a worklog about the flow of stages it goes through.
 On ROA you can declare each worklog as a child resource for the process resource
 
 ```php
-public $resources = [
+public array $resources = [
    'credit',
    'credit/<credit_id:\d+>/worklog' => [
        'class' => WorklogResource::class,

@@ -2,16 +2,16 @@
 
 namespace app\api\models;
 
-use roaresearch\yii2\roa\ResourceSearch;
+use roaresearch\yii2\roa\hal\ARContractSearch;
 use roaresearch\yii2\workflow\models\Stage;
 use yii\data\ActiveDataProvider;
 
-class CreditSearch extends Credit implements ResourceSearch
+class CreditSearch extends Credit implements ARContractSearch
 {
     /**
      * @inhertidoc
      */
-    protected $autogenerateInitialWorklog = false;
+    protected bool $autogenerateInitialWorklog = false;
 
     /**
      * @inhertidoc
@@ -48,18 +48,16 @@ class CreditSearch extends Credit implements ResourceSearch
         ?string $formName = ''
     ): ?ActiveDataProvider {
         $this->load($params, $formName);
-        if (!$this->validate()) {
-            return null;
-        }
 
-        $class = get_parent_class();
-        return new ActiveDataProvider([
-            'query' => $class::find()
-                ->joinWith('activeWorkLog')
-                ->andFilterWhere([
-                    'credit.created_by' => $this->created_by,
-                    'activeWorkLog.stage_id' => $this->activeStage,
-                ])
-        ]);
+        return $this->validate()
+            ? new ActiveDataProvider([
+                'query' => (get_parent_class())::find()
+                    ->joinWith('activeWorkLog')
+                    ->andFilterWhere([
+                        'credit.created_by' => $this->created_by,
+                        'activeWorkLog.stage_id' => $this->activeStage,
+                    ])
+            ])
+            : null;
     }
 }

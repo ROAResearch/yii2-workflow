@@ -19,7 +19,7 @@ class Workflow extends \roaresearch\yii2\rmdb\models\PersistentEntity
      * @var string full class name of the model to be used for the relation
      * `getStages()`.
      */
-    protected $stageClass = Stage::class;
+    protected string $stageClass = Stage::class;
 
     /**
      * @inheritdoc

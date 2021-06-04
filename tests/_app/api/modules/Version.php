@@ -19,7 +19,7 @@ class Version extends \roaresearch\yii2\roa\modules\ApiVersion
     /**
      * @inheritdoc
      */
-    public $resources = [
+    public array $resources = [
         self::CREDIT_ROUTE => ['class' => CreditResource::class],
         self::WORKLOG_ROUTE => ['class' => CreditWorkLogResource::class],
         self::ASSIGNMENT_ROUTE => ['class' => CreditAssignmentResource::class],

@@ -3,13 +3,13 @@
 namespace roaresearch\yii2\workflow\roa\models;
 
 use roaresearch\yii2\rmdb\SoftDeleteActiveQuery;
-use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
+use roaresearch\yii2\roa\hal\{ARContract, ContractTrait};
 use roaresearch\yii2\workflow\models as base;
 
 /**
  * ROA contract to handle workflow stage records.
  */
-class Stage extends base\Stage implements Contract
+class Stage extends base\Stage implements ARContract
 {
     use ContractTrait {
         getLinks as getContractLinks;
@@ -18,12 +18,12 @@ class Stage extends base\Stage implements Contract
     /**
      * @inheritdoc
      */
-    protected $workflowClass = Workflow::class;
+    protected string $workflowClass = Workflow::class;
 
     /**
      * @inheritdoc
      */
-    protected $transitionClass = Transition::class;
+    protected string $transitionClass = Transition::class;
 
     /**
      * @inheritdoc

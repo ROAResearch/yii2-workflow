@@ -24,5 +24,5 @@ class CreditWorkLogResource extends Resource
     /**
      * @inheritdoc
      */
-    public $filterParams = ['process_id'];
+    public array $filterParams = ['process_id'];
 }

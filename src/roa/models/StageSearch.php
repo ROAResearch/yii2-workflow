@@ -2,7 +2,7 @@
 
 namespace roaresearch\yii2\workflow\roa\models;
 
-use roaresearch\yii2\roa\ResourceSearch;
+use roaresearch\yii2\roa\hal\ARContractSearch;
 use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
 
 /**
@@ -10,7 +10,7 @@ use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
  *
  * @author Angel (Faryshta) Guevara <aguevara@alquimiadigital.mx>
  */
-class StageSearch extends Stage implements \roaresearch\yii2\roa\ResourceSearch
+class StageSearch extends Stage implements ARContractSearch
 {
     /**
      * @inhertidoc
@@ -39,9 +39,8 @@ class StageSearch extends Stage implements \roaresearch\yii2\roa\ResourceSearch
             throw new NotFoundHttpException('Unexistant workflow path.');
         }
 
-        $class = get_parent_class();
         return new ActiveDataProvider([
-            'query' => $class::find()->andFilterWhere([
+            'query' => (get_parent_class())::find()->andFilterWhere([
                     'created_by' => $this->created_by,
                     'workflow_id' => $this->workflow_id,
                 ])

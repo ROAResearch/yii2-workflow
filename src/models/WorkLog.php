@@ -136,7 +136,7 @@ abstract class WorkLog extends Pivot
     {
         if (!is_subclass_of($this->processClass(), Process::class)) {
             throw new InvalidConfigException(
-                static::class . '::processClass() must extend '
+                $this::class . '::processClass() must extend '
                     . Process::class
             );
         }

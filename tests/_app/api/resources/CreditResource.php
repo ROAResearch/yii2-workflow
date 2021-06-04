@@ -19,5 +19,5 @@ class CreditResource extends Resource
     /**
      * @inheritdoc
      */
-    public $searchClass = CreditSearch::class;
+    public ?string $searchClass = CreditSearch::class;
 }

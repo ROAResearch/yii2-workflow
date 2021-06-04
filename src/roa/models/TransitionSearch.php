@@ -2,7 +2,7 @@
 
 namespace roaresearch\yii2\workflow\roa\models;
 
-use roaresearch\yii2\roa\ResourceSearch;
+use roaresearch\yii2\roa\hal\ARContractSearch;
 use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
 
 /**
@@ -10,7 +10,7 @@ use yii\{data\ActiveDataProvider, web\NotFoundHttpException};
  *
  * @author Angel (Faryshta) Guevara <aguevara@alquimiadigital.mx>
  */
-class TransitionSearch extends Transition implements ResourceSearch
+class TransitionSearch extends Transition implements ARContractSearch
 {
 
     /**
@@ -42,9 +42,8 @@ class TransitionSearch extends Transition implements ResourceSearch
             throw new NotFoundHttpException('Unexistant stage path.');
         }
 
-        $class = get_parent_class();
         return new ActiveDataProvider([
-            'query' => $class::find()->andFilterWhere([
+            'query' => (get_parent_class())::find()->andFilterWhere([
                     'source_stage_id' => $this->source_stage_id,
                     'created_by' => $this->created_by,
                 ])

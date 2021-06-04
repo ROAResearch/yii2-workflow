@@ -20,12 +20,12 @@ class StageResource extends Resource
     /**
      * @inheritdoc
      */
-    public $searchClass = StageSearch::class;
+    public ?string $searchClass = StageSearch::class;
 
     /**
      * @inheritdoc
      */
-    public $filterParams = ['workflow_id'];
+    public array $filterParams = ['workflow_id'];
 
     /**
      * @inheritdoc

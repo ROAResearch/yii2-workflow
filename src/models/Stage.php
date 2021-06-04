@@ -24,13 +24,13 @@ class Stage extends \roaresearch\yii2\rmdb\models\PersistentEntity
      * @var string full class name of the model to be used for the relation
      * `getWorkflow()`.
      */
-    protected $workflowClass = Workflow::class;
+    protected string $workflowClass = Workflow::class;
 
     /**
      * @var string full class name of the model to be used for the relation
      * `getTransitions()`.
      */
-    protected $transitionClass = Transition::class;
+    protected string $transitionClass = Transition::class;
 
     /**
      * @inheritdoc

@@ -23,12 +23,12 @@ class PermissionResource extends Resource
     /**
      * @inheritdoc
      */
-    public $searchClass = TransitionPermissionSearch::class;
+    public ?string $searchClass = TransitionPermissionSearch::class;
 
     /**
      * @inheritdoc
      */
-    public $idAttribute = 'permission';
+    public string $idAttribute = 'permission';
 
     /**
      * @inheritdoc
@@ -43,5 +43,5 @@ class PermissionResource extends Resource
     /**
      * @inheritdoc
      */
-    public $filterParams = ['source_stage_id', 'target_stage_id'];
+    public array $filterParams = ['source_stage_id', 'target_stage_id'];
 }

@@ -20,7 +20,7 @@ class WorkflowResource extends Resource
     /**
      * @inheritdoc
      */
-    public $searchClass = WorkflowSearch::class;
+    public ?string $searchClass = WorkflowSearch::class;
 
     /**
      * @inheritdoc

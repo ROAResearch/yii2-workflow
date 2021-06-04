@@ -10,7 +10,7 @@ abstract class WorkLog extends \roaresearch\yii2\rmdb\migrations\CreatePivot
     /**
      * @var string suffix attached at the end of the process table.
      */
-    public $worklogSuffix = '_worklog';
+    public string $worklogSuffix = '_worklog';
 
     /**
      * @return string name of the table to which the worklog will be attached.

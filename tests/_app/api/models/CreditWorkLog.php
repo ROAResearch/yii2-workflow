@@ -3,12 +3,12 @@
 namespace app\api\models;
 
 use app\models as base;
-use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
+use roaresearch\yii2\roa\hal\{ARContract, ContractTrait};
 
 /**
  * ROA contract to handle credit_worklog records.
  */
-class CreditWorkLog extends base\CreditWorkLog implements Contract
+class CreditWorkLog extends base\CreditWorkLog implements ARContract
 {
     use ContractTrait;
 

@@ -2,7 +2,7 @@
 
 namespace roaresearch\yii2\workflow\roa\models;
 
-use roaresearch\yii2\roa\ResourceSearch;
+use roaresearch\yii2\roa\hal\ARContractSearch;
 use yii\data\ActiveDataProvider;
 
 /**
@@ -10,7 +10,7 @@ use yii\data\ActiveDataProvider;
  *
  * @author Angel (Faryshta) Guevara <aguevara@alquimiadigital.mx>
  */
-class WorkflowSearch extends Workflow implements ResourceSearch
+class WorkflowSearch extends Workflow implements ARContractSearch
 {
     /**
      * @inhertidoc
@@ -31,17 +31,15 @@ class WorkflowSearch extends Workflow implements ResourceSearch
         ?string $formName = ''
     ): ?ActiveDataProvider {
         $this->load($params, $formName);
-        if (!$this->validate()) {
-            return null;
-        }
 
-        $class = get_parent_class();
-        return new ActiveDataProvider([
-            'query' => $class::find()->andFilterWhere([
-                    'created_by' => $this->created_by,
-                ])
-                ->andFilterWhere(['like', 'name', $this->name])
-                ->notDeleted(),
-        ]);
+        return $this->validate()
+            ? new ActiveDataProvider([
+                'query' => (get_parent_class())::find()->andFilterWhere([
+                        'created_by' => $this->created_by,
+                    ])
+                    ->andFilterWhere(['like', 'name', $this->name])
+                    ->notDeleted(),
+            ])
+            : null;
     }
 }

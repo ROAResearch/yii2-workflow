@@ -2,13 +2,13 @@
 
 namespace roaresearch\yii2\workflow\roa\models;
 
-use roaresearch\yii2\roa\hal\{Contract, ContractTrait};
+use roaresearch\yii2\roa\hal\{ARContract, ContractTrait};
 use roaresearch\yii2\workflow\models as base;
 
 /**
  * ROA contract to handle workflow transitions records.
  */
-class Transition extends base\Transition implements Contract
+class Transition extends base\Transition implements ARContract
 {
     use ContractTrait {
         getLinks as getContractLinks;
@@ -17,12 +17,12 @@ class Transition extends base\Transition implements Contract
     /**
      * @inheritdoc
      */
-    protected $stageClass = Stage::class;
+    protected string $stageClass = Stage::class;
 
     /**
      * @inheritdoc
      */
-    protected $permissionClass = TransitionPermission::class;
+    protected string $permissionClass = TransitionPermission::class;
 
     /**
      * @inheritdoc
@@ -32,7 +32,7 @@ class Transition extends base\Transition implements Contract
         return [
             'resourceName' => 'transition',
             'parentSlugRelation' => 'sourceStage',
-            'idAttribute' => 'target_stage_id',
+            'idAttributes' => ['target_stage_id'],
         ];
     }
 

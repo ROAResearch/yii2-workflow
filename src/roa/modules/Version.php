@@ -22,7 +22,7 @@ class Version extends \roaresearch\yii2\roa\modules\ApiVersion
     /**
      * @inheritdoc
      */
-    public $resources = [
+    public array $resources = [
         self::WORKFLOW_ROUTE => ['class' => WorkflowResource::class],
         self::STAGE_ROUTE => ['class' => StageResource::class],
         self::TRANSITION_ROUTE => ['class' => TransitionResource::class],
